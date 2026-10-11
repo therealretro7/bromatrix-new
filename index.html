@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bromatrix | Research &amp; Innovation Hub &bull; IoT, Robotics, UAVs &amp; Custom R&amp;D</title>
+    <meta name="description" content="Bromatrix is an advanced innovation hub empowering institutions and tech innovators through IoT, Aerial Drones, Autonomous Robotics, 3D Design, and end-to-end hardware R&D.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Modular Stylesheet (Apple Monochrome Edition) -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-subtle-grid">
+
+    <!-- Site Header & Capsule Navigation (Matches Reference Image) -->
+    <header class="site-header" id="navbar">
+        <div class="header-container">
+            <!-- Brand Logo (Left) -->
+
+
+            <!-- Centered Floating Pill Capsule (Reference Replica) -->
+            <nav class="nav-capsule">
+                <a href="javascript:void(0)" onclick="openAboutModal()">About Us</a>
+                <a href="#team">The Team</a>
+                <a href="#victories">Victories</a>
+                <a href="#curriculum-timeline">10-Day Journey</a>
+                <a href="#trainings">Pillars</a>
+                <a href="#drone-lab">3D Drone Lab</a>
+                <a href="#architecture">Hardware Flow</a>
+                <a href="#ai-assistant">Ai Advisor</a>
+                <a href="#estimator">Estimator</a>
+            </nav>
+
+            <!-- Actions (Right - Reference Replica) -->
+            <div class="header-actions">
+                <a href="#ai-assistant" class="login-link">Portal</a>
+                <button onclick="openModal('training')" class="btn-pill-get-started">
+                    Get started
+                </button>
+                <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div class="mobile-nav-drawer" id="mobile-menu">
+            <a href="javascript:void(0)" onclick="openAboutModal();" class="mobile-link">About Bromatrix</a>
+            <a href="#team" class="mobile-link">The Leadership Team</a>
+            <a href="#manifesto" class="mobile-link">Vision & Philosophy</a>
+            <a href="#victories" class="mobile-link">AJEC Victory Showcase</a>
+            <a href="#curriculum-timeline" class="mobile-link">10-Day Bootcamp Journey</a>
+            <a href="#trainings" class="mobile-link">Core Technical Pillars</a>
+            <a href="#drone-lab" class="mobile-link">3D Holographic Drone Lab</a>
+            <a href="#architecture" class="mobile-link">Hardware Topology Flow</a>
+            <a href="#ai-assistant" class="mobile-link">Ai STEM Advisor</a>
+            <a href="#estimator" class="mobile-link">Scope & Program Estimator</a>
+            <a href="javascript:void(0)" onclick="openModal('training')" class="mobile-link" style="color: #ffffff; font-weight: 600;">Get started &rarr;</a>
+        </div>
+    </header>
+
+    <!-- Apple-Style Scroll-Driven Canvas Hero Section (120-Frame Sequence from Public/Images/Hero section) -->
+    <section class="hero-scroll-container" id="hero-scroll">
+        <div class="hero-sticky-viewport">
+            <!-- Canvas Rendering 120 Frames Sequence -->
+            <canvas id="hero-frame-canvas" class="hero-frame-canvas"></canvas>
+
+            <!-- Subtle Noir Vignette Overlays for seamless blending -->
+            <div class="hero-canvas-vignette-top"></div>
+            <div class="hero-canvas-vignette-bottom"></div>
+
+            <!-- Apple-Style Scroll Scrub Progress Line -->
+            <div class="hero-scroll-progress-track">
+                <div class="hero-scroll-progress-bar" id="hero-progress-bar"></div>
+            </div>
+
+            <!-- Text Content Overlay Based on Scroll Progression -->
+            <div class="hero-text-overlay-wrapper">
+                
+                <!-- Stage 1 (0% - 24% Scroll): Intro Brand & Title -->
+                <div class="hero-story-stage" id="hero-stage-1">
+                    <div class="hero-badge">
+                        <span class="hero-badge-dot"></span>
+                        <span>BROMATRIX INNOVATION HUB</span>
+                        <span style="opacity: 0.3;">|</span>
+                        <span>IoT &bull; ROBOTICS &bull; UAVs &bull; R&amp;D</span>
+                    </div>
+
+                    <h1 class="hero-headline">
+                        <span class="hero-headline-line">Hardware innovation</span>
+                        <span class="hero-headline-line">made effortlessly</span>
+                    </h1>
+
+                    <p class="hero-subheadline">
+                        Pioneering next-generation connected embedded systems, autonomous aerial robotics, and end-to-end custom hardware engineering for ambitious innovators and academic institutions.
+                    </p>
+
+                    <div class="apple-scroll-prompt">
+                        <div class="scroll-pill">
+                            <span class="scroll-dot"></span>
+                        </div>
+                        <span class="scroll-label">Scroll to animate hardware sequence</span>
+                    </div>
+                </div>
+
+                <!-- Stage 2 (26% - 49% Scroll): Feature 01 - Autonomous Avionics & Flight Dynamics -->
+                <div class="hero-story-stage" id="hero-stage-2">
+                    <span class="hero-feature-pill">FEATURE 01 &bull; AUTONOMOUS UAV FLIGHT</span>
+                    <h2 class="hero-stage-title">Precision Avionics &amp; Dynamics</h2>
+                    <p class="hero-stage-desc">
+                        From quadcopter aerodynamics and 6-axis IMU gyro calibration to STM32F405 Betaflight PID tuning and autonomous GPS waypoint missions.
+                    </p>
+                    <div class="hero-metrics-pill-row">
+                        <span class="hero-feature-metric"><strong>8 kHz</strong> Loop Frequency</span>
+                        <span class="hero-feature-metric"><strong>DShot600</strong> Protocol</span>
+                        <span class="hero-feature-metric"><strong>GPS RTH</strong> Autonomous Fail-Safe</span>
+                    </div>
+                </div>
+
+                <!-- Stage 3 (51% - 74% Scroll): Feature 02 - Dual-Core Edge Telemetry -->
+                <div class="hero-story-stage" id="hero-stage-3">
+                    <span class="hero-feature-pill">FEATURE 02 &bull; CONNECTED IoT EDGE</span>
+                    <h2 class="hero-stage-title">Dual-Core Telemetry Ingestion</h2>
+                    <p class="hero-stage-desc">
+                        Microsecond ADC sampling, concurrent FreeRTOS task scheduling, and secure TLS publish-subscribe MQTT pipelines streaming real-time sensor metrics directly to dynamic dashboards.
+                    </p>
+                    <div class="hero-metrics-pill-row">
+                        <span class="hero-feature-metric"><strong>240 MHz</strong> Dual-Core Xtensa</span>
+                        <span class="hero-feature-metric"><strong>&lt;40ms</strong> Cloud Latency</span>
+                        <span class="hero-feature-metric"><strong>TLS 1.3</strong> Cryptography</span>
+                    </div>
+                </div>
+
+                <!-- Stage 4 (76% - 100% Scroll): Feature 03 - Rapid Prototyping & CAD Synthesis -->
+                <div class="hero-story-stage" id="hero-stage-4">
+                    <span class="hero-feature-pill">FEATURE 03 &bull; RAPID FABRICATION &amp; R&amp;D</span>
+                    <h2 class="hero-stage-title">From Concept to Verified Flight</h2>
+                    <p class="hero-stage-desc">
+                        Precision Fusion 360 mechanical modeling, structural vibration-damping enclosures, and rapid additive manufacturing designed to take innovations from napkin sketch to verified physical deployment.
+                    </p>
+                    <div class="hero-metrics-pill-row">
+                        <span class="hero-feature-metric"><strong>0.05 mm</strong> Dimensional Rigor</span>
+                        <span class="hero-feature-metric"><strong>Carbon-PLA</strong> Composites</span>
+                        <span class="hero-feature-metric"><strong>100%</strong> Bench Tested</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Stage Indicator (01 / 04) -->
+            <div class="hero-stage-counter">
+                <span id="hero-current-step">01</span>
+                <span style="opacity: 0.3;">/</span>
+                <span style="opacity: 0.5;">04</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Apple-Style Typography Manifesto Statement -->
+    <section class="manifesto-section" id="manifesto">
+        <div class="manifesto-container">
+            <span class="section-tag fm-reveal">PHILOSOPHY & VISION</span>
+            <h2 class="manifesto-quote fm-reveal" id="manifesto-typewriter" style="margin-top: 1.5rem; cursor: pointer;"
+                data-text-line1="Engineering isn't learned from slides."
+                data-text-line2="It is soldered onto breadboards, optimized in bare-metal registers, and proven in autonomous aerial flight."
+                title="Click to replay typing animation">
+                <span class="typewriter-line-1">Engineering isn't learned from slides.</span><br>
+                <span class="dim typewriter-line-2">It is soldered onto breadboards, optimized in bare-metal registers, and proven in autonomous aerial flight.</span><span class="typewriter-cursor" aria-hidden="true"></span>
+            </h2>
+
+            <div class="manifesto-grid fm-stagger">
+                <div class="fm-reveal">
+                    <div class="manifesto-stat-num count-up" data-count="100" data-suffix="%">0%</div>
+                    <div class="manifesto-stat-label">Hardware-First Learning</div>
+                    <div class="manifesto-stat-desc">Every student codes directly on microcontrollers and builds working flight mechanics.</div>
+                </div>
+                <div class="fm-reveal">
+                    <div class="manifesto-stat-num count-up" data-count="2" data-suffix="" data-pad="2">00</div>
+                    <div class="manifesto-stat-label">Flagship Cohorts Completed</div>
+                    <div class="manifesto-stat-desc">Intensive multi-week cohorts across college engineering institutions.</div>
+                </div>
+                <div class="fm-reveal">
+                    <div class="manifesto-stat-num count-up" data-count="4" data-suffix="+" data-pad="2">00+</div>
+                    <div class="manifesto-stat-label">Core STEM Disciplines</div>
+                    <div class="manifesto-stat-desc">Seamlessly unifying IoT telemetry, Drone dynamics, Mechatronics, and 3D CAD.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section: About Us -->
+    <section class="section-padding" id="about" style="border-bottom: 1px solid var(--border-subtle); background: #050508;">
+        <div class="container-max">
+            <div class="about-hero-grid">
+                <div class="fm-reveal">
+                    <span class="about-stat-pill">
+                        <i class="fa-solid fa-compass"></i> Our Origin &amp; Identity
+                    </span>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.7rem; margin-bottom: 1.25rem;">
+                        Born in a College Lab.<br>Built for the Real World.
+                    </h2>
+                    <p class="about-lead-text">
+                        Bromatrix is a student-founded hardware startup from <strong style="color:#ffffff;">Vimal Jyothi Engineering College, Chemperi</strong> &mdash; built on the belief that real engineering is learned through hands, not slides.
+                    </p>
+                </div>
+                <div class="fm-reveal" style="transition-delay: 0.15s;">
+                    <p class="about-body-text">
+                        What started as three passionate engineers &mdash; an EEE innovator with a DST national grant, a technology enthusiast, and an AI &amp; Data Science specialist &mdash; has grown into a full-spectrum hardware startup. Bromatrix unites <strong style="color: #ffffff;">IoT Connected Telemetry</strong>, <strong style="color: #ffffff;">Autonomous UAV Drones</strong>, <strong style="color: #ffffff;">Intelligent Mechatronics</strong>, and <strong style="color: #ffffff;">Rapid 3D Prototyping</strong> under one mission.
+                    </p>
+                    <p class="about-body-text">
+                        From DST INSPIRE-funded R&amp;D and state-level competition wins, to mentoring 400+ students across engineering campuses &mdash; every project carries genuine, silicon-level experience.
+                    </p>
+                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-microchip" style="margin-right: 6px;"></i> Embedded Systems</span>
+                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-plane-up" style="margin-right: 6px;"></i> Autonomous UAVs</span>
+                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-cube" style="margin-right: 6px;"></i> 3D CAD &amp; Prototyping</span>
+                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> Power Electronics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Champions at Tech-Fest AJEC (Authentic Photos from Link 1) -->
+    <section class="section-padding" id="victories">
+        <div class="container-max">
+            <div class="section-header">
+                <span class="section-tag fm-reveal">MILESTONE TRACK RECORD</span>
+                <h2 class="section-title fm-reveal">Celebrating Our First Official Win as Bromatrix</h2>
+                <p class="section-subtitle fm-reveal">
+                    A defining milestone: Bromatrix emerged victorious at the premier Technical Championship hosted by Amal Jyothi College of Engineering (AJEC), demonstrating hardware precision and robotics agility.
+                </p>
+            </div>
+
+            <!-- Apple-style Photo Gallery Mosaic -->
+            <div class="gallery-grid fm-stagger">
+                <!-- Large Feature Card 1 -->
+                <div class="gallery-card bento-col-8 fm-scale" style="min-height: 380px;">
+                    <img src="images/ajec_win_1.webp" alt="Bromatrix Victory at AJEC Tech-Fest" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Championship Victory &bull; Amal Jyothi College</div>
+                        <div class="gallery-caption">Bromatrix team celebrating our first official championship podium victory with faculty mentors and technical jurors.</div>
+                    </div>
+                </div>
+
+                <!-- Secondary Card 2 -->
+                <div class="gallery-card bento-col-4 fm-scale" style="min-height: 380px;">
+                    <img src="images/ajec_win_2.webp" alt="Bromatrix Team with Trophy" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Verified Honors</div>
+                        <div class="gallery-caption">Official recognition for superior drone maneuverability and autonomous sensor performance.</div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="gallery-card bento-col-4 fm-scale" style="min-height: 320px;">
+                    <img src="images/ajec_win_3.webp" alt="Bromatrix Engineering Mentors" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Mentor Leadership</div>
+                        <div class="gallery-caption">Hands-on guidance and technical debrief with institutional department heads.</div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="gallery-card bento-col-4 fm-scale" style="min-height: 320px;">
+                    <img src="images/ajec_win_4.webp" alt="AJEC Tech Fest Celebration" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Engineering Camaraderie</div>
+                        <div class="gallery-caption">Inspiring the next generation of robotics innovators and flight engineers.</div>
+                    </div>
+                </div>
+
+                <!-- Card 5 (Techfest Action) -->
+                <div class="gallery-card bento-col-4 fm-scale" style="min-height: 320px;">
+                    <img src="images/ajec_techfest.jpg" alt="Live Techfest Arena Action" class="gallery-img">
+                    <div class="gallery-overlay">
+                        <div class="gallery-title">Arena Trials</div>
+                        <div class="gallery-caption">Real-time live telemetry testing and autonomous navigation benchmarks.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Summer Internship Inauguration Showcase (From Link 2) -->
+    <section class="section-padding" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="container-max">
+            <div class="inaug-wrapper">
+                <!-- Left Details -->
+                <div class="fm-reveal">
+                    <span class="section-tag" style="margin-bottom: 1.25rem;">FLAGSHIP PROGRAM INAUGURATION</span>
+                    <h2 class="section-title" style="text-align: left; font-size: 2.5rem; margin-bottom: 1.25rem;">
+                        Two-Week Intensive Summer Internship
+                    </h2>
+                    <p class="section-subtitle" style="text-align: left; font-size: 0.95rem; margin-bottom: 1.5rem;">
+                        Successfully inaugurated with enthusiastic participation across institutions: a comprehensive immersion spanning IoT Connected Systems, Aerial Drones, Autonomous Robotics, and 3D Rapid Prototyping.
+                    </p>
+
+                    <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px;">
+                            <i class="fa-solid fa-microchip" style="font-size: 1.25rem; color: #ffffff;"></i>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.88rem; color: #ffffff;">100% Hardware Kit Allocation</div>
+                                <div style="font-size: 0.78rem; color: #a1a1aa;">Each batch received dedicated microcontrollers, motors, ESCs & sensors.</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); border-radius: 12px;">
+                            <i class="fa-solid fa-graduation-cap" style="font-size: 1.25rem; color: #ffffff;"></i>
+                            <div>
+                                <div style="font-weight: 600; font-size: 0.88rem; color: #ffffff;">Dual Industry & Academic Certification</div>
+                                <div style="font-size: 0.78rem; color: #a1a1aa;">Verified portfolio artifacts and real engineering capstones for every intern.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Photo Feature -->
+                <div class="inaug-photo-stack fm-scale">
+                    <img src="images/internship_banner.webp" alt="Inauguration of Bromatrix Summer Internship">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Internship 2.0 - The 10-Day Bootcamp Journey (Carousels) -->
+    <section class="section-padding cosmic-section" id="curriculum-timeline">
+        <!-- Glowing Aurora Ribbon Beam at Theme Transition -->
+        <div class="cosmic-theme-beam"></div>
+        <div class="cosmic-feather-top"></div>
+
+        <!-- Ambient Cosmic Glow Elements -->
+        <div class="cosmic-glow-orb orb-top-right"></div>
+        <div class="cosmic-glow-orb orb-bottom-left"></div>
+        <div class="cosmic-nebula-ambient"></div>
+
+        <div class="container-max" style="position: relative; z-index: 2;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem;">
+                <div class="fm-reveal">
+                    <span class="section-tag cosmic-tag">STRUCTURED 10-DAY CURRICULUM</span>
+                    <h2 class="section-title" style="text-align: left; margin-top: 0.75rem;">
+                        Inside the 10-Day Hardware Bootcamp
+                    </h2>
+                    <p class="section-subtitle" style="text-align: left; max-width: 600px; margin-top: 0.5rem;">
+                        Explore the day-by-day rigorous engineering progression completed during the Bromatrix Internship 2.0.
+                    </p>
+                </div>
+                <!-- Carousel Arrow Controls -->
+                <div style="display: flex; gap: 0.75rem;" class="fm-reveal">
+                    <button id="scroll-curr-prev" class="cosmic-carousel-btn" aria-label="Previous Day">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button id="scroll-curr-next" class="cosmic-carousel-btn" aria-label="Next Day">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Horizontal Scrollable Day Cards -->
+            <div class="curriculum-scroller" id="curriculum-scroller">
+                <!-- Day 1 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 01</span>
+                        <h4>Foundations & MCU Architecture</h4>
+                        <p>Inaugural orientation, toolchain setup, ESP32 dual-core Xtensa pinout mapping, and low-level GPIO register programming.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_1.jpg" alt="Day 1 Hands-on lab">
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 02</span>
+                        <h4>Sensors & Telemetry Ingestion</h4>
+                        <p>ADC calibration, analog sampling, temperature/humidity sensors (DHT22), ultrasonic distance ranging, and noise filtering.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_2.jpg" alt="Day 2 Sensor wiring">
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 03</span>
+                        <h4>Firmware Architecture & FreeRTOS</h4>
+                        <p>Real-Time Operating System tasks, hardware timers, ISR (Interrupt Service Routines), and asynchronous C/C++ firmware pipelines.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_3.jpg" alt="Day 3 Firmware Coding">
+                    </div>
+                </div>
+
+                <!-- Day 4 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 04</span>
+                        <h4>IoT Telemetry & MQTT Pipelines</h4>
+                        <p>Wi-Fi station configuration, TLS sockets, publish/subscribe MQTT broker clustering, and live web telemetry dashboards.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_4.jpg" alt="Day 4 IoT Dashboards">
+                    </div>
+                </div>
+
+                <!-- Day 5 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 05</span>
+                        <h4>Drone Aerodynamics & PID Tuning</h4>
+                        <p>Quadcopter frame dynamics, thrust-to-weight ratios, 6-axis IMU gyro calibration, and Betaflight flight controller tuning.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_5.jpg" alt="Day 5 Drone Assembly">
+                    </div>
+                </div>
+
+                <!-- Day 6 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 06</span>
+                        <h4>Propulsion, ESCs & RF Link</h4>
+                        <p>Brushless DC motors, DShot600 electronic speed controllers, LiPo battery power distribution boards, and 2.4GHz RF pairing.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_6.jpg" alt="Day 6 ESC Soldering">
+                    </div>
+                </div>
+
+                <!-- Day 7 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 07</span>
+                        <h4>Autonomous Robotics & Kinematics</h4>
+                        <p>Dual H-bridge motor drivers, differential drive geometry, IR array sensor bar, and closed-loop PID autonomous track following.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_1.jpg" alt="Day 7 Robotics Track">
+                    </div>
+                </div>
+
+                <!-- Day 8 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 08</span>
+                        <h4>3D CAD Modeling in Fusion 360</h4>
+                        <p>Parametric sketching, mechanical constraint engineering, shell thickness, snap-fit tolerances, and custom hardware enclosures.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_2.jpg" alt="Day 8 CAD Modeling">
+                    </div>
+                </div>
+
+                <!-- Day 9 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 09</span>
+                        <h4>Slicing & Additive Manufacturing</h4>
+                        <p>G-code generation, layer heights, infill densities, FDM 3D printer calibration, bed leveling, and rapid prototype fabrication.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/workshop_action_3.jpg" alt="Day 9 3D Printing">
+                    </div>
+                </div>
+
+                <!-- Day 10 -->
+                <div class="curriculum-card">
+                    <div>
+                        <span class="curriculum-day-tag">Day 10</span>
+                        <h4>Arena Trials & Certification</h4>
+                        <p>Live flight testing arena, Roborace speed trial challenge, capstone technical presentation, and verified credential awards.</p>
+                    </div>
+                    <div class="curriculum-photo-thumb">
+                        <img src="images/internship_inaug_1.webp" alt="Day 10 Showcase and Graduation">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Asymmetric Bento Grid (Recreated from Layout Reference) -->
+    <section class="section-padding cosmic-section" id="trainings">
+        <!-- Ambient Cosmic Glow Orbs -->
+        <div class="cosmic-glow-orb orb-top-right"></div>
+        <div class="cosmic-glow-orb orb-bottom-left"></div>
+        <div class="cosmic-nebula-ambient"></div>
+
+        <div class="container-max" style="position: relative; z-index: 2;">
+            <div class="section-header">
+                <span class="section-tag cosmic-tag fm-reveal">ASYMMETRIC ENGINEERING MATRIX</span>
+                <h2 class="section-title fm-reveal">Our Core Technical Pillars</h2>
+                <p class="section-subtitle fm-reveal">
+                    Deep hardware expertise, parametric CAD, bare-metal C++, and autonomous flight dynamics engineered into high-performance programs.
+                </p>
+            </div>
+
+            <!-- Asymmetric Bento Grid: Exact Structural Layout Reference -->
+            <div class="asym-bento-grid fm-stagger">
+                
+                <!-- CARD 1 (Top Left - Wide Hero Card ~66%) -->
+                <div class="asym-card card-top-left fm-scale">
+                    <div class="card-inner-left">
+                        <span class="card-pill-tag">
+                            <i class="fa-solid fa-microchip"></i> ADVANCED R&D
+                        </span>
+                        <h3 class="bento-massive-headline">
+                            TOP<br>SKILLS<br>PRO
+                        </h3>
+                        <p class="bento-subtext">
+                            Full-Stack Embedded Firmware, Autonomous Robotics & UAV Drone Mastery.
+                        </p>
+                    </div>
+                    <div class="card-inner-right">
+                        <img src="images/workshop_action_1.jpg" alt="Bromatrix Hardware Research Team" class="bento-cutout-img">
+                    </div>
+                </div>
+
+                <!-- CARD 2 (Top Right - Action Image + Quad Badge ~33%) -->
+                <div class="asym-card card-top-right fm-scale">
+                    <img src="images/workshop_action_2.jpg" alt="Autonomous Flight Bench" class="card-bg-img">
+                    <div class="card-gradient-overlay"></div>
+                    <div class="card-header-badge">
+                        <div class="quad-circular-badge">
+                            <span>2</span><span>0</span>
+                            <span>2</span><span>6</span>
+                        </div>
+                    </div>
+                    <div class="card-footer-info">
+                        <span class="bento-mini-label">RESEARCH FACILITY</span>
+                        <h4 class="bento-card-heading">AUTONOMOUS FLIGHT BENCH</h4>
+                    </div>
+                </div>
+
+                <!-- CARD 3 (Middle-Bottom Left - Tall Vertical Portrait Card, Spans Rows 2 & 3 ~33%) -->
+                <div class="asym-card card-tall-left fm-scale">
+                    <img src="images/ajec_win_1.webp" alt="AJCE State Tech-Fest Victory" class="card-bg-img tall-img">
+                    <div class="card-tall-gradient"></div>
+                    <div class="tall-top-badge">
+                        <span class="pulsing-radar-dot"></span>
+                        <span class="radar-label">AJCE 2026 VICTORS</span>
+                    </div>
+                    <div class="tall-bottom-content">
+                        <span class="tall-tag">AEROSPACE & ROBOTICS TRIUMPH</span>
+                        <h4 class="tall-title">NATIONAL CHAMPIONS</h4>
+                        <p class="tall-desc">1st Prize in Autonomous Flight Dynamics & Precision Drone Arena Trials.</p>
+                    </div>
+                </div>
+
+                <!-- CARD 4 (Middle Right - Wide Program Banner ~66%) -->
+                <div class="asym-card card-banner-right fm-scale">
+                    <div class="banner-top-row">
+                        <div class="banner-title-wrap">
+                            <span class="banner-tag">FLAGSHIP COHORT</span>
+                            <h3 class="banner-title">
+                                ADVANCED PROTOTYPING & EMBEDDED R&D PROGRAM
+                            </h3>
+                        </div>
+                        <a href="#estimator" class="banner-arrow-btn" aria-label="Explore Program">
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="banner-bottom-row">
+                        <div class="banner-big-date">10-DAY BOOTCAMP &mdash; SUMMER 2026</div>
+                    </div>
+                </div>
+
+                <!-- CARD 5 (Bottom Middle - Certified Credentials Card ~38%) -->
+                <div class="asym-card card-bottom-cert fm-scale">
+                    <div class="cert-text-wrap">
+                        <div class="cert-heading">
+                            VERIFIED CAPSTONE & GOVT-RECOGNIZED ARTIFACTS
+                        </div>
+                        <p class="cert-subtext">State-accredited engineering portfolio credentials and verified hardware repositories.</p>
+                    </div>
+                    <div class="cert-image-wrap">
+                        <img src="images/internship_inaug_1.webp" alt="Bromatrix Certified Credentials">
+                    </div>
+                </div>
+
+                <!-- CARDS 6 & 7 (Bottom Right Sub-Stack ~28%) -->
+                <div class="asym-sub-stack fm-scale">
+                    <!-- CARD 6 (Top: Hub Card) -->
+                    <div class="asym-card card-bottom-hub">
+                        <div class="hub-icon-box">
+                            <i class="fa-solid fa-microchip"></i>
+                        </div>
+                        <div class="hub-info-text">
+                            <strong>BROMATRIX HUB</strong>
+                            <span>Research & Innovation Center</span>
+                        </div>
+                    </div>
+
+                    <!-- CARD 7 (Bottom: Location Card) -->
+                    <div class="asym-card card-bottom-location">
+                        <div class="location-inner">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>AMAL JYOTHI CAMPUS &bull; KERALA</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="cosmic-feather-bottom"></div>
+    </section>
+
+    <!-- Section 6: 3D Holographic UAV Drone Laboratory (Specimen: Public/3d/drone.glb) -->
+    <section class="holographic-drone-section" id="drone-lab">
+        <div class="drone-ambient-glow drone-glow-center"></div>
+
+        <!-- Full-Page Interactive 3D Viewport Stage (No boxed border edges, edge-to-edge full page) -->
+        <div class="drone-viewport-stage" id="drone-viewport">
+            <!-- WebGL 3D Canvas -->
+            <canvas id="drone-canvas"></canvas>
+
+            <!-- Subtle Sci-Fi Grid Overlay -->
+            <div class="drone-grid-overlay"></div>
+
+            <!-- Top & Bottom Seamless Cosmic Vignettes -->
+            <div class="drone-vignette-top"></div>
+            <div class="drone-vignette-bottom"></div>
+
+            <!-- Floating Header with safe clearance from fixed navbar -->
+            <div class="drone-floating-header">
+                <div class="fm-reveal">
+                    <span class="section-tag" style="border-color: rgba(0, 229, 255, 0.4); color: #00f0ff; background: rgba(0, 229, 255, 0.08); margin-bottom: 0.6rem;">
+                        <i class="fa-solid fa-cube" style="margin-right: 6px;"></i>
+                        AEROSPACE CAD SPECIMEN &bull; INTERACTIVE 3D
+                    </span>
+                    <h2 class="section-title" style="font-size: clamp(2rem, 4.2vw, 3.2rem); margin-bottom: 0.5rem; text-shadow: 0 4px 30px rgba(0,0,0,0.95);">
+                        Hex-Rotor UAV Drone Specimen
+                    </h2>
+                    <p class="section-subtitle" style="max-width: 680px; margin: 0 auto; font-size: 0.92rem; text-shadow: 0 2px 14px rgba(0,0,0,0.95);">
+                        Touch, drag, and freely inspect the real CAD airframe. Toggle between the original textured PBR body and glowing multi-spectrum holograms.
+                    </p>
+                </div>
+            </div>
+
+            <!-- HUD Top Left: Telemetry & Model Status -->
+            <div class="drone-hud-top-left">
+                <div class="drone-hud-badge">
+                    <span class="drone-hud-dot"></span>
+                    <span id="drone-hud-status">STREAMING CAD // ONLINE</span>
+                </div>
+                <div class="drone-hud-telemetry">
+                    SPECIMEN: <span>UAV-HEX01 (989K Vertices)</span><br>
+                    AVIONICS: <span>STM32F405 8kHz</span><br>
+                    RENDER: <span>REAL-TIME WEBGL</span>
+                </div>
+            </div>
+
+            <!-- HUD Top Right: Presets, Theme Switcher & Controls -->
+            <div class="drone-hud-top-right">
+                <!-- Camera Angle Presets -->
+                <div class="drone-control-pill-group">
+                    <button class="drone-ctrl-btn active" data-drone-preset="perspective" title="Perspective Angle">Perspective</button>
+                    <button class="drone-ctrl-btn" data-drone-preset="top" title="Top View">Top</button>
+                    <button class="drone-ctrl-btn" data-drone-preset="front" title="Front View">Front</button>
+                    <button class="drone-ctrl-btn" data-drone-preset="cockpit" title="Cockpit View">Cockpit</button>
+                </div>
+
+                <!-- Appearance Themes: Original PBR + Holograms -->
+                <div class="drone-control-pill-group">
+                    <!-- Original PBR Material Toggle -->
+                    <button class="drone-ctrl-btn" data-holo-color="original" id="btn-theme-original" title="Original Textured CAD Model">
+                        <i class="fa-solid fa-palette" style="margin-right: 4px; color: #f59e0b;"></i> Original
+                    </button>
+                    <!-- Hologram Color Switchers -->
+                    <button class="drone-color-btn color-cyan active" data-holo-color="cyan" title="Cyber Cyan Hologram"></button>
+                    <button class="drone-color-btn color-violet" data-holo-color="violet" title="Nebula Violet Hologram"></button>
+                    <button class="drone-color-btn color-emerald" data-holo-color="emerald" title="Matrix Emerald Hologram"></button>
+                    <div style="width: 1px; height: 16px; background: rgba(255,255,255,0.15); margin: 0 2px;"></div>
+                    <!-- Wireframe & Auto-Spin Toggles -->
+                    <button class="drone-ctrl-btn" id="btn-toggle-wireframe" title="Toggle Wireframe Overlay">
+                        <i class="fa-solid fa-border-none" style="margin-right: 4px;"></i> Wireframe
+                    </button>
+                    <button class="drone-ctrl-btn active" id="btn-toggle-autorotate" title="Toggle Auto-Spin">
+                        <span>Auto Spin: ON</span>
+                    </button>
+                    <button class="drone-ctrl-btn" id="btn-reset-drone" title="Reset View Angle">
+                        <i class="fa-solid fa-arrows-rotate"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- HUD Bottom: Gesture Guide & Subsystem Hotspots -->
+            <div class="drone-hud-bottom">
+                <!-- Subsystem Inspection Hotspots -->
+                <div class="drone-hotspots-bar">
+                    <button class="drone-hotspot-chip" data-hotspot-target="avionics">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span>Avionics Core</span>
+                    </button>
+                    <button class="drone-hotspot-chip" data-hotspot-target="motors">
+                        <i class="fa-solid fa-fan"></i>
+                        <span>2207 Motors</span>
+                    </button>
+                    <button class="drone-hotspot-chip" data-hotspot-target="telemetry">
+                        <i class="fa-solid fa-tower-broadcast"></i>
+                        <span>Telemetry Radio</span>
+                    </button>
+                    <button class="drone-hotspot-chip" data-hotspot-target="battery">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>LiPo Cell</span>
+                    </button>
+                </div>
+
+                <!-- User Gesture Interaction Legend -->
+                <div class="drone-gesture-legend">
+                    <span><i class="fa-solid fa-hand-pointer"></i> Drag to Rotate</span>
+                    <span><i class="fa-solid fa-magnifying-glass-plus"></i> Scroll / Pinch to Zoom</span>
+                    <span><i class="fa-solid fa-arrows-up-down-left-right"></i> Right-Click to Pan</span>
+                    <span><i class="fa-solid fa-sparkles"></i> Release to Float</span>
+                </div>
+            </div>
+
+            <!-- Floating Hotspot Telemetry Specs Card -->
+            <div class="drone-hotspot-card" id="drone-hotspot-card">
+                <div class="drone-hotspot-header">
+                    <div>
+                        <div class="drone-hotspot-title" id="drone-hotspot-title">Subsystem Spec</div>
+                        <div class="drone-hotspot-subtitle" id="drone-hotspot-subtitle">Telemetry Layer</div>
+                    </div>
+                    <button class="drone-hotspot-close-btn" id="drone-hotspot-close" aria-label="Close Specs">&times;</button>
+                </div>
+                <div class="drone-hotspot-grid" id="drone-hotspot-grid"></div>
+            </div>
+
+            <!-- High-Tech Loading Screen Overlay -->
+            <div class="drone-loading-overlay" id="drone-loading-overlay">
+                <div class="drone-spinner-radar"></div>
+                <div class="drone-load-text">DECRYPTING HOLOGRAPHIC CAD // <span id="drone-load-percent">0%</span></div>
+                <div class="drone-load-bar-track">
+                    <div class="drone-load-bar-fill" id="drone-load-progress-bar"></div>
+                </div>
+                <div class="drone-load-meta" id="drone-load-bytes">Streaming 54.9 MB UAV Geometry...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Interactive Hardware System Topology Visualizer -->
+    <section class="section-padding" id="architecture" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
+        <div class="container-max">
+            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-medium); border-radius: 28px; padding: 3rem 2.5rem;">
+                <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 3rem; align-items: center;">
+                    
+                    <!-- Left Details -->
+                    <div class="fm-reveal">
+                        <span class="section-tag" style="margin-bottom: 1rem;">SYSTEM ARCHITECTURE BLUEPRINT</span>
+                        <h2 class="section-title" style="font-size: 2.4rem; text-align: left; margin-bottom: 1rem;">
+                            Explore Hardware Flow Blueprints
+                        </h2>
+                        <p class="section-subtitle" style="text-align: left; margin-bottom: 2rem;">
+                            Select a technical domain below to inspect step-by-step signal propagation, microcontroller processing, and actuator output taught across our programs.
+                        </p>
+
+                        <!-- Dynamic Tabs -->
+                        <div>
+                            <button onclick="switchArch('iot')" id="tab-iot" class="arch-tab-btn active">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #ffffff;">Smart IoT & Telemetry Architecture</div>
+                                <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 3px;">ESP32 telemetry to MQTT Broker & Cloud Dashboard</div>
+                            </button>
+
+                            <button onclick="switchArch('drone')" id="tab-drone" class="arch-tab-btn">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #ffffff;">Quad-Rotor Aerial Drone System</div>
+                                <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 3px;">Flight Controller PID, Telemetry & ESC Motor Drives</div>
+                            </button>
+
+                            <button onclick="switchArch('rd')" id="tab-rd" class="arch-tab-btn">
+                                <div style="font-weight: 600; font-size: 0.9rem; color: #ffffff;">R&D Prototype Development Pipeline</div>
+                                <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 3px;">3D CAD Design, PCB Etching, Assembly & Validation</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Visual Terminal Diagram -->
+                    <div class="fm-scale">
+                        <div class="terminal-wrapper">
+                            <div class="terminal-header">
+                                <div style="display: flex; align-items: center; gap: 8px;">
+                                    <div class="terminal-dots">
+                                        <div class="terminal-dot"></div>
+                                        <div class="terminal-dot"></div>
+                                        <div class="terminal-dot"></div>
+                                    </div>
+                                    <span style="font-size: 0.72rem; color: #71717a; margin-left: 8px;">bromatrix-hardware-blueprint --live</span>
+                                </div>
+                                <span style="color: #ffffff; display: flex; align-items: center; gap: 6px;">
+                                    <span style="width: 6px; height: 6px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 6px #ffffff;"></span>
+                                    ONLINE
+                                </span>
+                            </div>
+
+                            <!-- Injected Topology Nodes -->
+                            <div id="arch-diagram-container"></div>
+
+                            <!-- Footer Metrics -->
+                            <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid var(--border-subtle); display: flex; justify-content: space-between; font-size: 0.75rem; color: #71717a;">
+                                <span id="arch-metric-left">Controller: <strong>ESP32 dual-core</strong></span>
+                                <span id="arch-metric-right">Track: <strong>100% Practical</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Hardware Arsenal & Technical Specifications (Apple Spec Sheet) -->
+    <section class="section-padding">
+        <div class="container-max" style="max-width: 960px;">
+            <div class="section-header">
+                <span class="section-tag fm-reveal">HARDWARE STANDARDS</span>
+                <h2 class="section-title fm-reveal">The Engineering Arsenal</h2>
+                <p class="section-subtitle fm-reveal">
+                    Industrial microcontrollers, aeronautical flight autopilots, and professional fabrication toolchains utilized across all Bromatrix laboratories.
+                </p>
+            </div>
+
+            <div class="specs-table fm-reveal">
+                <div class="specs-row">
+                    <div class="specs-category">Microcontrollers & SOCs</div>
+                    <div class="specs-detail">ESP32 Xtensa Dual-Core 240MHz, STM32F4 Cortex-M4, Raspberry Pi Pico RP2040, ATmega328P.</div>
+                </div>
+
+                <div class="specs-row">
+                    <div class="specs-category">Aeronautical Flight Stack</div>
+                    <div class="specs-detail">STM32F405 Flight Controllers, Betaflight 4.4, PX4 Autopilot, MPU6000 6-Axis IMUs, 2205 Brushless Motors, BLHeli_S 30A ESCs.</div>
+                </div>
+
+                <div class="specs-row">
+                    <div class="specs-category">Additive Manufacturing</div>
+                    <div class="specs-detail">Autodesk Fusion 360 parametric design, Ultimaker Cura & PrusaSlicer, high-tensile Carbon-PLA, PETG & Tough Resin.</div>
+                </div>
+
+                <div class="specs-row">
+                    <div class="specs-category">Telemetry & IoT Protocols</div>
+                    <div class="specs-detail">MQTT TLS, WebSockets, LoRa 868/915MHz, I2C, SPI, UART, CAN Bus, Node-RED, InfluxDB dashboards.</div>
+                </div>
+
+                <div class="specs-row">
+                    <div class="specs-category">Robotics & Actuation</div>
+                    <div class="specs-detail">Closed-loop PID DC encoders, High-torque Metal-Gear Servos, L298N/DRV8833 dual H-bridges, 8-channel analog IR reflectometers.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: AI STEM Advisor (Gemini Knowledge Engine) -->
+    <section class="section-padding" id="ai-assistant">
+        <div class="container-max" style="max-width: 980px;">
+            <div class="section-header">
+                <span class="section-tag fm-reveal">AI HARDWARE & SYLLABUS ENGINE</span>
+                <h2 class="section-title fm-reveal">Bromatrix AI STEM Advisor</h2>
+                <p class="section-subtitle fm-reveal">
+                    Need an immediate workshop syllabus, project component breakdown, or school curriculum outline? Ask our AI engine for a tailored engineering blueprint.
+                </p>
+            </div>
+
+            <div class="ai-card fm-scale">
+                <!-- Real AI Engine Live Status Bar -->
+                <div class="ai-engine-status-bar">
+                    <div class="ai-status-indicator">
+                        <span class="ai-live-pulse"></span>
+                        <span id="ai-engine-label" class="ai-engine-label">LIVE REAL AI MODEL CONNECTED: GPT-4o / LLAMA-3 NEURAL ENGINE</span>
+                    </div>
+                    <button type="button" class="ai-settings-toggle-btn" onclick="toggleAISettings()" title="Configure Custom API Key or Model">
+                        <i class="fa-solid fa-sliders"></i>
+                        <span>Engine Settings</span>
+                    </button>
+                </div>
+
+                <!-- Collapsible Engine Settings Drawer -->
+                <div id="ai-settings-drawer" class="ai-settings-drawer">
+                    <div class="ai-drawer-content">
+                        <div class="ai-drawer-row">
+                            <div class="ai-drawer-field">
+                                <label for="ai-model-provider">Active Real AI Engine Provider</label>
+                                <select id="ai-model-provider" class="ai-drawer-select" onchange="handleModelProviderChange()">
+                                    <option value="pollinations">High-Speed Real Neural Cloud (Default - Instant, Free, No Key Required)</option>
+                                    <option value="gemini">Google Gemini 1.5 Flash (Custom Key)</option>
+                                    <option value="gemini2">Google Gemini 2.0 Flash (Custom Key)</option>
+                                </select>
+                            </div>
+                            <div class="ai-drawer-field" id="gemini-key-field" style="display: none;">
+                                <label for="gemini-api-key-input">Google Gemini API Key (Saved in local browser)</label>
+                                <div style="display: flex; gap: 8px;">
+                                    <input type="password" id="gemini-api-key-input" class="ai-drawer-input" placeholder="AIzaSy...">
+                                    <button type="button" class="ai-key-save-btn" onclick="saveGeminiApiKey()">Save Key</button>
+                                </div>
+                                <span style="font-size: 0.72rem; color: #a1a1aa; margin-top: 4px; display: block;">
+                                    Get a free key from <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" style="color: #ffffff; text-decoration: underline;">Google AI Studio</a>.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <label for="ai-prompt" style="font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); display: block; margin-top: 1rem;">
+                    Enter Your Training or Hardware Project Query:
+                </label>
+
+                <div class="ai-input-wrap">
+                    <textarea id="ai-prompt" rows="3" class="ai-textarea" placeholder="e.g., Generate a 3-day workshop syllabus for engineering students on Autonomous Drones with Flight Controllers and PID Tuning..."></textarea>
+                    
+                    <button id="ai-submit-btn" onclick="generateAIArchitecture()" class="ai-submit-btn">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <span>Generate Plan</span>
+                    </button>
+                </div>
+
+                <!-- Quick Prompt Chips -->
+                <div class="ai-chips-wrap">
+                    <span style="font-family: var(--font-mono); font-size: 0.72rem; color: #71717a;">Quick Samples:</span>
+                    <button class="ai-chip" onclick="setSamplePrompt('Outline a 5-day IoT & ESP32 Smart Agriculture workshop for college students')">
+                        College IoT Workshop
+                    </button>
+                    <button class="ai-chip" onclick="setSamplePrompt('Suggest a beginner-friendly 3D Printing and Robotics curriculum for school students')">
+                        School Robotics Curriculum
+                    </button>
+                    <button class="ai-chip" onclick="setSamplePrompt('List key hardware modules and sensors required to build an autonomous Obstacle Avoiding Drone')">
+                        Drone Hardware Stack
+                    </button>
+                </div>
+
+                <!-- Response Box -->
+                <div id="ai-response-box" class="ai-response-box">
+                    <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 0.75rem; margin-bottom: 1rem; flex-wrap: wrap; gap: 0.5rem;">
+                        <div style="display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 0.75rem; color: #ffffff;">
+                            <i class="fa-solid fa-microchip"></i>
+                            <span>BROMATRIX GENERATED STEM BLUEPRINT</span>
+                            <span id="ai-model-tag" class="ai-model-tag">REAL NEURAL INFERENCE</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <span id="ai-generation-time" style="font-family: var(--font-mono); font-size: 0.72rem; color: #71717a;"></span>
+                            <button onclick="navigator.clipboard.writeText(document.getElementById('ai-response-content').innerText); alert('Blueprint copied to clipboard!');" style="background: none; border: 1px solid var(--border-subtle); color: #a1a1aa; font-size: 0.72rem; padding: 4px 10px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease;">
+                                <i class="fa-regular fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+                    <div id="ai-response-content" style="line-height: 1.7; font-size: 0.9rem; color: #d4d4d8;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Program & Workshop Estimator Tool -->
+    <section class="section-padding" id="estimator">
+        <div class="container-max">
+            <div class="section-header">
+                <span class="section-tag fm-reveal">PROGRAM SCOPE CALCULATOR</span>
+                <h2 class="section-title fm-reveal">Workshop & R&D Estimator</h2>
+                <p class="section-subtitle fm-reveal">
+                    Configure your educational workshop scale or custom prototype scope to receive an instant timeline estimate and quotation structure.
+                </p>
+            </div>
+
+            <div class="calc-wrapper fm-scale">
+                <!-- Left Controls -->
+                <div style="display: flex; flex-direction: column; gap: 2rem;">
+                    <!-- Step 1: Program Type -->
+                    <div>
+                        <label style="display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-silver); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;">
+                            1. Select Program / Service Type
+                        </label>
+                        <div class="calc-btn-group">
+                            <button type="button" onclick="updateCalc('school', this)" class="calc-option-btn active">
+                                Institutional Workshop
+                            </button>
+                            <button type="button" onclick="updateCalc('rd', this)" class="calc-option-btn">
+                                Custom Project / R&D
+                            </button>
+                            <button type="button" onclick="updateCalc('curriculum', this)" class="calc-option-btn">
+                                Curriculum & Lab Setup
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Batch Size -->
+                    <div>
+                        <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-silver); text-transform: uppercase; letter-spacing: 0.12em;">2. Batch Size / Scope Tier</span>
+                            <span id="concurrency-label" style="color: #ffffff; font-weight: 700;">50 Students</span>
+                        </div>
+                        <input type="range" min="1" max="4" step="1" value="2" oninput="updateCalcRange(this.value)" class="calc-slider">
+                        <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.7rem; color: #71717a; margin-top: 6px;">
+                            <span>25 Batch</span>
+                            <span>50 Batch</span>
+                            <span>150 Batch</span>
+                            <span>300+ Batch</span>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Add-on Modules -->
+                    <div>
+                        <label style="display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-silver); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;">
+                            3. Add-on Modules & Hardware Kits
+                        </label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                            <label style="padding: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-size: 0.82rem; color: #d4d4d8;">
+                                <input type="checkbox" onchange="toggleAddon('kits', this.checked)" style="accent-color: #ffffff;">
+                                <span>Take-Home Hardware Kits</span>
+                            </label>
+                            <label style="padding: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-size: 0.82rem; color: #d4d4d8;">
+                                <input type="checkbox" onchange="toggleAddon('drone', this.checked)" style="accent-color: #ffffff;">
+                                <span>Drone Flight Sim Rig</span>
+                            </label>
+                            <label style="padding: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-size: 0.82rem; color: #d4d4d8;">
+                                <input type="checkbox" onchange="toggleAddon('3d', this.checked)" style="accent-color: #ffffff;">
+                                <span>3D Printing CAD Lab</span>
+                            </label>
+                            <label style="padding: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-size: 0.82rem; color: #d4d4d8;">
+                                <input type="checkbox" onchange="toggleAddon('cert', this.checked)" style="accent-color: #ffffff;">
+                                <span>Industry Certificates</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Result Card -->
+                <div class="calc-summary-card">
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1rem;">
+                            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-silver); text-transform: uppercase; letter-spacing: 0.12em;">ESTIMATED PROGRAM SUMMARY</span>
+                            <span style="width: 8px; height: 8px; border-radius: 50%; background: #ffffff; box-shadow: 0 0 10px #ffffff;"></span>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 0.75rem; font-family: var(--font-mono); color: #71717a;">Suggested Duration</div>
+                            <div id="est-time" style="font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: #ffffff; margin-top: 4px;">2 - 3 Days</div>
+                        </div>
+
+                        <div>
+                            <div style="font-size: 0.75rem; font-family: var(--font-mono); color: #71717a;">Program Scope & Track</div>
+                            <div id="est-cost" style="font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: #ffffff; margin-top: 4px;">Hands-On Practical Lab</div>
+                            <p style="font-size: 0.78rem; color: #a1a1aa; line-height: 1.5; margin-top: 0.5rem;">
+                                Includes full equipment allocation, mentor lead engineers, live testing hardware, and institutional certificates.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-subtle);">
+                        <button onclick="openModalWithEstimate()" class="btn-monochrome" style="width: 100%; justify-content: center;">
+                            <span>Lock In Dates & Request Proposal</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- THE TEAM - End of Page -->
+    <section class="section-padding" id="team" style="background: #050508; border-top: 1px solid var(--border-subtle); scroll-margin-top: 90px;">
+        <div class="container-max">
+            <div class="section-header" style="margin-bottom: 3.5rem;">
+                <span class="section-tag fm-reveal">THE FOUNDERS</span>
+                <h2 class="section-title fm-reveal">The Minds Behind Bromatrix</h2>
+                <p class="section-subtitle fm-reveal">
+                    Three engineers from Vimal Jyothi Engineering College, Chemperi &mdash; united by a passion for hardware, drones, and real-world STEM education.
+                </p>
+            </div>
+
+            <div class="team-grid fm-stagger">
+
+                <!-- Simon Joseph -->
+                <div class="team-card fm-scale">
+                    <div>
+                        <div class="team-photo-wrap">
+                            <span class="team-floating-badge">Co-Founder</span>
+                            <img src="images/team_simon_joseph.jpg" alt="Simon Joseph" class="team-photo-img">
+                            <div class="team-photo-overlay"></div>
+                        </div>
+                        <h3 class="team-name">Simon Joseph</h3>
+                        <div class="team-title">Co-Founder &amp; Hardware Director &bull; EEE, 4th Year</div>
+                        <p class="team-bio">
+                            DST INSPIRE Award &ndash; MANAK Grantee (&#8377;10,000 national grant), State-level Electrical Wiring Competitor, and Lead STEAM Educator who has mentored 400+ school students. Specialises in embedded systems (Arduino, ESP32, STM32, Raspberry Pi), UAV fabrication, power systems, and IoT prototyping. Interned at Srishti Robotics and the Barapole Small Hydro Electric Project (SHEP).
+                        </p>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
+                            <span class="card-tag">DST INSPIRE Grantee</span>
+                            <span class="card-tag">UAV &amp; Robotics</span>
+                            <span class="card-tag">Power Systems</span>
+                            <span class="card-tag">STEAM Educator</span>
+                        </div>
+                    </div>
+                    <div class="team-links">
+                        <a href="https://wa.me/919061136839" target="_blank" rel="noopener noreferrer" class="team-action-pill">
+                            <span><i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 8px;"></i> WhatsApp</span>
+                            <span>+91 90611 36839 &rarr;</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/simon-joseph-538a7b357/" target="_blank" rel="noopener noreferrer" class="team-action-pill">
+                            <span><i class="fa-brands fa-linkedin" style="color: #0A66C2; margin-right: 8px;"></i> LinkedIn Profile</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Ajith Mathew -->
+                <div class="team-card fm-scale">
+                    <div>
+                        <div class="team-photo-wrap">
+                            <span class="team-floating-badge">Co-Founder</span>
+                            <img src="images/team_ajith_mathew.jpg" alt="Ajith Mathew" class="team-photo-img">
+                            <div class="team-photo-overlay"></div>
+                        </div>
+                        <h3 class="team-name">Ajith Mathew</h3>
+                        <div class="team-title">Co-Founder &amp; Operations Lead</div>
+                        <p class="team-bio">
+                            A driven and innovative professional with a strong commitment to technology and continuous learning. Ajith leads operational excellence at Bromatrix &mdash; overseeing UAV flight laboratories, student cohort programs, and industrial prototype workflows from concept through to physical testing and delivery.
+                        </p>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
+                            <span class="card-tag">Operations</span>
+                            <span class="card-tag">UAV Labs</span>
+                            <span class="card-tag">Prototyping</span>
+                        </div>
+                    </div>
+                    <div class="team-links">
+                        <a href="https://wa.me/916235385080" target="_blank" rel="noopener noreferrer" class="team-action-pill">
+                            <span><i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 8px;"></i> WhatsApp</span>
+                            <span>+91 62353 85080 &rarr;</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ajithmathew303/" target="_blank" rel="noopener noreferrer" class="team-action-pill">
+                            <span><i class="fa-brands fa-linkedin" style="color: #0A66C2; margin-right: 8px;"></i> LinkedIn Profile</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Aswin Asok KV -->
+                <div class="team-card fm-scale">
+                    <div>
+                        <div class="team-photo-wrap">
+                            <span class="team-floating-badge" style="background: rgba(255,255,255,0.18); border-color: #ffffff;">Technical Lead</span>
+                            <img src="images/team_aswin_asok.jpg" alt="Aswin Asok KV" class="team-photo-img">
+                            <div class="team-photo-overlay"></div>
+                        </div>
+                        <h3 class="team-name">Aswin Asok KV</h3>
+                        <div class="team-title">Technical Lead &amp; AI Systems Architect &bull; AI &amp; DS, 3rd Year</div>
+                        <p class="team-bio">
+                            3rd-year B.Tech student in AI &amp; Data Science at VJEC. IEEE SB Publicity Coordinator, Joint Secretary of IEEE CIS, and NSS NRPF Coordinator. Passionate about artificial intelligence, data science, and creative digital content. Architects the AI-driven systems, firmware stacks, and digital platforms that power Bromatrix's technical edge.
+                        </p>
+                        <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:0.75rem;">
+                            <span class="card-tag">AI &amp; Data Science</span>
+                            <span class="card-tag">IEEE SB</span>
+                            <span class="card-tag">Firmware</span>
+                            <span class="card-tag">NSS</span>
+                        </div>
+                    </div>
+                    <div class="team-links">
+                        <a href="https://wa.me/919496083505" target="_blank" rel="noopener noreferrer" class="team-action-pill">
+                            <span><i class="fa-brands fa-whatsapp" style="color: #25D366; margin-right: 8px;"></i> WhatsApp</span>
+                            <span>+91 94960 83505 &rarr;</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/aswin-asok-kv-b0838b32b/" target="_blank" rel="noopener noreferrer" class="team-action-pill">
+                            <span><i class="fa-brands fa-linkedin" style="color: #0A66C2; margin-right: 8px;"></i> LinkedIn Profile</span>
+                            <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.75rem;"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div><!-- end team-grid -->
+        </div>
+    </section>
+    <!-- Footer CTA & Links -->
+    <footer class="site-footer">
+        <div class="container-max">
+            <!-- CTA Box -->
+            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-strong); border-radius: 24px; padding: 3.5rem 3rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 5rem;" class="fm-reveal">
+                <div style="max-width: 600px;">
+                    <h2 class="section-title" style="font-size: 2.2rem; text-align: left; margin-bottom: 0.75rem;">
+                        Bring Bromatrix to Your Institution or Lab
+                    </h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">
+                        Partner with our engineering team to design custom college workshops, establish robotics labs, or build prototype hardware.
+                    </p>
+                </div>
+                <button onclick="openModal('general')" class="btn-monochrome" style="padding: 1rem 2rem; font-size: 0.9rem;">
+                    <span>Contact Technical Team</span>
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </div>
+
+            <!-- Footer Columns -->
+            <div class="footer-grid fm-stagger">
+                <div class="footer-col fm-reveal">
+                    <a href="#" class="brand-link" style="margin-bottom: 1.25rem; display: inline-block;">
+                        <img src="images/bromatrix-logo.png" alt="BROMATRIX" class="footer-logo" />
+                    </a>
+                    <p style="font-size: 0.82rem; color: #71717a; line-height: 1.7; max-width: 320px;">
+                        A student-founded hardware startup from Vimal Jyothi Engineering College, Chemperi. Advancing STEM through UAV drones, embedded systems, IoT, and hands-on engineering education.
+                    </p>
+                </div>
+
+                <div class="footer-col fm-reveal">
+                    <h4>Organization</h4>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" onclick="openAboutModal()">About Bromatrix</a></li>
+                        <li><a href="#team">The Leadership Team</a></li>
+                        <li><a href="#victories">AJEC Victory Record</a></li>
+                        <li><a href="#trainings">Core Technical Pillars</a></li>
+                        <li><a href="#curriculum">Curriculum Lab Setup</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col fm-reveal">
+                    <h4>Interactive Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#ai-assistant">AI STEM Advisor</a></li>
+                        <li><a href="#architecture">Hardware Flow Blueprints</a></li>
+                        <li><a href="#estimator">Scope Calculator</a></li>
+                        <li><a href="#curriculum-timeline">10-Day Curriculum</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col fm-reveal">
+                    <h4>Connect</h4>
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
+                        <a href="#" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #71717a;">
+                        Status: <span style="color: #ffffff;">Accepting Workshop Enquiries</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 Bromatrix Innovation Hub. All rights reserved.</div>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="#" style="color: #71717a; text-decoration: none;">Privacy Policy</a>
+                    <a href="#" style="color: #71717a; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact & Booking Modal (Linked to Bromatrix Google Form) -->
+    <div id="contact-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button onclick="closeModal()" class="modal-close-btn" aria-label="Close Modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Hidden iframe for seamless form submission fallback -->
+            <iframe name="hidden_google_form_iframe" id="hidden_google_form_iframe" style="display:none;"></iframe>
+
+            <div>
+                <span id="modal-category-tag" style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: #a1a1aa;">PROGRAM ENQUIRY</span>
+                <h3 style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: #ffffff; margin-top: 0.25rem;">Connect with Bromatrix</h3>
+                <p style="font-size: 0.82rem; color: #71717a; margin-top: 0.25rem;">
+                    Submit your requirements for institutional workshops, student batches, or custom R&amp;D hardware.
+                </p>
+            </div>
+
+            <form id="contact-form" 
+                  action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdvgHHZ3TcUOMpdW74oYFwD8hqpg3tUbBUoMZsfGdVpEj1taw/formResponse" 
+                  method="POST" 
+                  target="hidden_google_form_iframe" 
+                  onsubmit="handleFormSubmit(event)" 
+                  style="margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                
+                <!-- Google Form Required Hidden Parameters -->
+                <input type="hidden" name="fvv" value="1">
+                <input type="hidden" name="pageHistory" value="0">
+                <input type="hidden" name="fbzx" value="8995174530060344429">
+
+                <div>
+                    <label for="modal-name" style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: #a1a1aa;">Your Name / Institution</label>
+                    <input type="text" id="modal-name" name="entry.2093970937" required class="modal-input" placeholder="e.g. Dr. A. Sharma / Tech University">
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="modal-email" style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: #a1a1aa;">Email Address</label>
+                        <input type="email" id="modal-email" name="entry.740093555" required class="modal-input" placeholder="faculty@institution.edu">
+                    </div>
+                    <div>
+                        <label for="modal-phone" style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: #a1a1aa;">Contact Number</label>
+                        <input type="tel" id="modal-phone" name="entry.1330326239" required class="modal-input" placeholder="+91 98765 43210">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="modal-project-summary" style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: #a1a1aa;">Program Scope / Project Details</label>
+                    <textarea id="modal-project-summary" name="entry.1909550285" rows="3" required class="modal-input" style="resize: none;" placeholder="Details about training dates, student strength, or hardware prototype requirements..."></textarea>
+                </div>
+
+                <button type="submit" id="modal-submit-btn" class="btn-monochrome" style="width: 100%; justify-content: center; margin-top: 0.5rem; padding: 1rem;">
+                    <span id="modal-submit-label">Submit Enquiry to Bromatrix Desk</span>
+                </button>
+
+                <!-- Direct Google Form Link Option -->
+                <div style="text-align: center; margin-top: 0.25rem;">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvgHHZ3TcUOMpdW74oYFwD8hqpg3tUbBUoMZsfGdVpEj1taw/viewform?usp=header" 
+                       target="_blank" 
+                       rel="noopener noreferrer" 
+                       style="font-family: var(--font-mono); font-size: 0.72rem; color: #71717a; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: color 0.2s;" 
+                       onmouseover="this.style.color='#ffffff'" 
+                       onmouseout="this.style.color='#71717a'">
+                        <span>Open directly in Google Forms</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.65rem;"></i>
+                    </a>
+                </div>
+            </form>
+
+            <div id="modal-success" style="display: none; margin-top: 1rem; padding: 1.25rem; border-radius: 8px; background: rgba(16, 185, 129, 0.08); border: 1px solid rgba(16, 185, 129, 0.4); font-family: var(--font-mono); font-size: 0.8rem; text-align: center; color: #ffffff;">
+                <div style="font-size: 1.5rem; color: #10b981; margin-bottom: 0.5rem;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <div style="font-weight: 600; font-size: 0.95rem; margin-bottom: 0.25rem;">Enquiry Transmitted Successfully!</div>
+                <div style="color: #a1a1aa; font-size: 0.76rem; line-height: 1.5;">Your response has been saved directly to Bromatrix's Google Form. Our engineering team will review your requirements and reach out shortly.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Three.js 3D Engine & GLTFLoader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+
+    <!-- Main JavaScript Module -->
+    <script src="js/main.js"></script>
+
+    <!-- Embedded drone.glb Binary Data (Supports direct file:/// protocol without CORS) -->
+    <script src="js/drone-model-data.js"></script>
+
+    <!-- Holographic 3D Drone Experience (drone.glb) -->
+    <script src="js/drone-3d.js"></script>
+
+    <!-- ======= ABOUT US POPUP MODAL ======= -->
+    <div id="about-modal" class="modal-overlay">
+        <div class="about-modal-box">
+
+            <!-- Close -->
+            <button onclick="closeAboutModal()" class="modal-close-btn" aria-label="Close" style="position:absolute; top:1.25rem; right:1.25rem;">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- Header -->
+            <div style="margin-bottom:2rem;">
+                <span style="font-family:var(--font-mono); font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:#a1a1aa;">WHO WE ARE</span>
+                <h2 style="font-family:var(--font-display); font-size:2rem; font-weight:800; color:#ffffff; margin-top:0.4rem; line-height:1.2;">
+                    Bromatrix
+                </h2>
+                <p style="font-size:0.85rem; color:#a1a1aa; margin-top:0.35rem;">
+                    Student-founded hardware startup &bull; Vimal Jyothi Engineering College, Chemperi
+                </p>
+            </div>
+
+            <!-- Grid: Story + Highlights -->
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem;">
+                <div>
+                    <h4 style="font-size:0.78rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:#71717a; margin-bottom:0.75rem;">Our Story</h4>
+                    <p style="font-size:0.875rem; color:#d4d4d8; line-height:1.75;">
+                        Bromatrix was born from a simple conviction &mdash; <strong style="color:#fff;">engineering cannot be learned from slides.</strong> Three students at VJEC, Chemperi came together to build a startup that bridges the gap between classroom theory and real-world hardware.
+                    </p>
+                    <p style="font-size:0.875rem; color:#d4d4d8; line-height:1.75; margin-top:0.75rem;">
+                        From a DST INSPIRE national grant and state-level competition victories, to mentoring 400+ students &mdash; every project we touch is built with real silicon, real code, and real impact.
+                    </p>
+                </div>
+                <div>
+                    <h4 style="font-size:0.78rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:#71717a; margin-bottom:0.75rem;">What We Do</h4>
+                    <div style="display:flex; flex-direction:column; gap:0.6rem;">
+                        <div class="about-modal-pill"><i class="fa-solid fa-microchip"></i> Embedded Systems &amp; IoT Prototyping</div>
+                        <div class="about-modal-pill"><i class="fa-solid fa-plane-up"></i> Autonomous UAV Drone Fabrication</div>
+                        <div class="about-modal-pill"><i class="fa-solid fa-bolt"></i> Power Electronics &amp; EEE R&amp;D</div>
+                        <div class="about-modal-pill"><i class="fa-solid fa-cube"></i> 3D Printing &amp; Rapid Prototyping</div>
+                        <div class="about-modal-pill"><i class="fa-solid fa-graduation-cap"></i> STEM Bootcamps &amp; Workshops</div>
+                        <div class="about-modal-pill"><i class="fa-solid fa-brain"></i> AI &amp; Data Science Applications</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats row -->
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; padding:1.5rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; margin-bottom:2rem;">
+                <div style="text-align:center;">
+                    <div style="font-family:var(--font-display); font-size:2rem; font-weight:800; color:#fff;">400+</div>
+                    <div style="font-size:0.75rem; color:#71717a; margin-top:0.25rem;">Students Mentored</div>
+                </div>
+                <div style="text-align:center; border-left:1px solid rgba(255,255,255,0.08); border-right:1px solid rgba(255,255,255,0.08);">
+                    <div style="font-family:var(--font-display); font-size:2rem; font-weight:800; color:#fff;">&#8377;10K</div>
+                    <div style="font-size:0.75rem; color:#71717a; margin-top:0.25rem;">DST National Grant</div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-family:var(--font-display); font-size:2rem; font-weight:800; color:#fff;">02</div>
+                    <div style="font-size:0.75rem; color:#71717a; margin-top:0.25rem;">Flagship Cohorts</div>
+                </div>
+            </div>
+
+            <!-- Founders Mini Grid -->
+            <div style="margin-bottom: 2rem;">
+                <h4 style="font-size:0.78rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:#71717a; margin-bottom:0.75rem;">Founding Team &bull; VJEC Chemperi</h4>
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem;">
+                        <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">Simon Joseph</div>
+                        <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 0.2rem;">Co-Founder &amp; Hardware Director</div>
+                        <div style="font-size: 0.72rem; color: #71717a; margin-top: 0.35rem;">4th Year EEE &bull; DST INSPIRE Grantee &bull; State Wiring Competitor</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem;">
+                        <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">Ajith Mathew</div>
+                        <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 0.2rem;">Co-Founder &amp; Operations Lead</div>
+                        <div style="font-size: 0.72rem; color: #71717a; margin-top: 0.35rem;">UAV Flight Labs &bull; Student Cohorts &bull; Prototyping</div>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem;">
+                        <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">Aswin Asok KV</div>
+                        <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 0.2rem;">Technical Lead &amp; AI Systems</div>
+                        <div style="font-size: 0.72rem; color: #71717a; margin-top: 0.35rem;">3rd Year AI &amp; DS &bull; IEEE SB Publicity Coord &bull; NSS Coordinator</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- College badge & Full profiles action -->
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding:1rem 1.25rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px;">
+                <div style="display:flex; align-items:center; gap:1rem;">
+                    <i class="fa-solid fa-school" style="font-size:1.5rem; color:#ffffff;"></i>
+                    <div>
+                        <div style="font-weight:600; font-size:0.9rem; color:#ffffff;">Vimal Jyothi Engineering College</div>
+                        <div style="font-size:0.78rem; color:#71717a;">Chemperi, Kannur, Kerala &bull; Home of Bromatrix</div>
+                    </div>
+                </div>
+                <a href="#team" onclick="closeAboutModal()" class="btn-monochrome" style="padding: 0.6rem 1.2rem; font-size: 0.8rem; text-decoration: none;">
+                    <span>View Full Team Bios &amp; Contacts &rarr;</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
