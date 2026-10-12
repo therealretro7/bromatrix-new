@@ -1,4 +1,4 @@
-﻿/* ===================================================================
+/* ===================================================================
    BROMATRIX - APPLE-INSPIRED MONOCHROME DESIGN SYSTEM
    Framer Motion-style Transitions, Editorial Noir & Sticky Scrollytelling
    =================================================================== */
@@ -53,6 +53,7 @@ html {
     font-size: 16px;
     background-color: var(--bg-black);
     color: var(--text-silver);
+    overflow-x: hidden;
 }
 
 body {
@@ -234,6 +235,9 @@ body {
     text-decoration: none;
     color: var(--text-white);
     transition: opacity 0.2s ease;
+    position: absolute;
+    left: 0;
+    z-index: 2;
 }
 .brand-link:hover { opacity: 0.85; }
 
@@ -421,7 +425,7 @@ body {
 .hero-scroll-container {
     position: relative;
     width: 100%;
-    height: 420vh; /* Provides generous scroll distance for 120 frames & 4 narrative stages */
+    height: 175vh; /* Fast, responsive, seamless transition to next section */
     background-color: #000000;
 }
 
@@ -429,7 +433,7 @@ body {
     position: sticky;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     overflow: hidden;
     display: flex;
@@ -507,22 +511,25 @@ body {
 /* Individual Story Stages (Cross-fading with scroll) */
 .hero-story-stage {
     position: absolute;
-    max-width: 980px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 920px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.35s var(--ease-apple), transform 0.35s var(--ease-apple);
+    transition: opacity 0.25s var(--ease-apple);
     will-change: opacity, transform;
 }
 
 .hero-story-stage.is-active {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(-50%, -50%);
     pointer-events: auto;
 }
 
@@ -656,6 +663,7 @@ body {
     backdrop-filter: blur(14px);
     z-index: 20;
     pointer-events: none;
+    transition: opacity 0.2s ease;
 }
 
 /* Apple-style Scroll Down Indicator (Replaces buttons on hero) */
@@ -706,7 +714,7 @@ body {
    SECTION COMMON STYLING
    =================================================================== */
 .section-padding {
-    padding: 8rem 1.5rem;
+    padding: 7rem 0;
     position: relative;
     z-index: 10;
 }
@@ -753,7 +761,7 @@ body {
    APPLE MANIFESTO SECTION (Full-Width Typography Statement)
    =================================================================== */
 .manifesto-section {
-    padding: 9rem 1.5rem;
+    padding: 5rem 1.5rem;
     border-top: 1px solid var(--border-subtle);
     border-bottom: 1px solid var(--border-subtle);
     background: #050507;
@@ -827,6 +835,13 @@ body {
     margin-bottom: 5.5rem;
     padding-bottom: 4.5rem;
     border-bottom: 1px solid var(--border-subtle);
+}
+
+.about-section-title {
+    text-align: left;
+    font-size: clamp(2rem, 3.8vw, 2.7rem);
+    margin-bottom: 1.25rem;
+    line-height: 1.18;
 }
 
 .about-stat-pill {
@@ -2679,7 +2694,7 @@ body.theme-cosmic #cursor-dot {
 /* Full-Page Edge-to-Edge Stage (Zero Border Edges) */
 .drone-viewport-stage {
     position: relative;
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     min-height: 720px;
     background: radial-gradient(ellipse at 50% 50%, rgba(24, 30, 38, 0.65) 0%, rgba(5, 7, 10, 0.98) 75%);
@@ -3083,36 +3098,45 @@ body.theme-cosmic #cursor-dot {
 }
 
 /* ===================================================================
-   RESPONSIVE DESIGN
+   UTILITY & COMPONENT CLASSES
    =================================================================== */
-@media (max-width: 1024px) {
-    .nav-capsule { display: none; }
-    .mobile-toggle { display: block; }
-    .bento-col-8, .bento-col-4, .bento-col-6 { grid-column: span 12; }
-    .inaug-wrapper { grid-template-columns: 1fr; }
-    .calc-wrapper { grid-template-columns: 1fr; }
-    .manifesto-grid { grid-template-columns: 1fr; }
-    .specs-row { grid-template-columns: 1fr; gap: 0.5rem; }
-    .footer-grid { grid-template-columns: 1fr 1fr; }
-    .drone-viewport-stage { height: 95vh; min-height: 640px; }
-    .drone-hud-top-left { padding: 0.75rem 1rem; }
+.arch-blueprint-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--border-medium);
+    border-radius: 28px;
+    padding: 3rem 2.5rem;
 }
 
-@media (max-width: 640px) {
-    .site-header { padding: 1rem; }
-    .hero-section { padding: 8rem 1rem 4rem; }
-    .footer-grid { grid-template-columns: 1fr; }
-    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-    .calc-btn-group { grid-template-columns: 1fr; }
-    .drone-viewport-stage { height: 90vh; min-height: 540px; }
-    .drone-floating-header { padding-top: 4.5rem; }
-    .drone-hud-top-left { top: 0.75rem; left: 0.75rem; padding: 0.5rem 0.75rem; }
-    .drone-hud-telemetry { display: none; }
-    .drone-hud-top-right { top: 0.75rem; right: 0.75rem; gap: 0.35rem; }
-    .drone-hud-bottom { bottom: 0.75rem; width: 95%; }
-    .drone-gesture-legend { font-size: 0.62rem; padding: 0.35rem 0.7rem; gap: 0.5rem; }
-    .drone-hotspot-card { left: 0.75rem; right: 0.75rem; width: auto; bottom: 4.5rem; padding: 1rem; }
-    .drone-ctrl-btn { padding: 0.25rem 0.55rem; font-size: 0.65rem; }
+.arch-blueprint-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.calc-addons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.footer-cta-box {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-strong);
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.modal-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
 
@@ -3175,6 +3199,7 @@ body.theme-cosmic #cursor-dot {
     width: 100%;
     max-height: 90vh;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     box-shadow: 0 32px 80px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.08);
     transform: scale(0.95);
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -3201,14 +3226,392 @@ body.theme-cosmic #cursor-dot {
     border-color: rgba(255, 255, 255, 0.18);
 }
 
+.about-modal-story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.about-modal-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    margin-bottom: 2rem;
+}
+
+.about-modal-stat-mid {
+    text-align: center;
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.about-modal-founders-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.about-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+}
+
+/* ===================================================================
+   RESPONSIVE DESIGN & COMPLETE MOBILE ADAPTATIONS
+   =================================================================== */
+
+/* Tablet (<= 1024px) */
+@media (max-width: 1024px) {
+    .site-header { padding: 0.85rem 1.5rem; }
+    .header-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    .brand-link { position: static; display: flex; align-items: center; gap: 0.65rem; }
+    .brand-logo { height: 32px; }
+    .brand-title { font-size: 1.05rem; }
+    .nav-capsule { display: none; }
+    .mobile-toggle { display: flex; align-items: center; justify-content: center; }
+    .header-actions { position: static; gap: 0.85rem; }
+
+    .bento-col-8, .bento-col-4, .bento-col-6 { grid-column: span 12; }
+    .inaug-wrapper { grid-template-columns: 1fr; padding: 2.25rem; }
+    .calc-wrapper { grid-template-columns: 1fr; padding: 2rem; }
+    .manifesto-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .specs-row { grid-template-columns: 1fr; gap: 0.5rem; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .arch-blueprint-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+    .about-hero-grid { grid-template-columns: 1fr; gap: 2.5rem; margin-bottom: 3.5rem; padding-bottom: 3.5rem; }
+    .drone-viewport-stage { height: 95vh; min-height: 640px; }
+    .drone-hud-top-left { padding: 0.75rem 1rem; }
+}
+
+/* Medium Tablets & Landscape (<= 900px) */
+@media (max-width: 900px) {
+    .team-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+/* Mobile Phones (<= 768px) */
+@media (max-width: 768px) {
+    /* REMOVE 3D DRONE FOR MOBILE (Eliminates 73MB download and performance lag) */
+    #drone-lab,
+    .holographic-drone-section {
+        display: none !important;
+    }
+
+    /* Hero Section Mobile Optimization (Prevents scroll fatigue and blank gaps) */
+    .hero-scroll-container {
+        height: 150vh;
+    }
+    .hero-story-stage {
+        width: 92%;
+        gap: 1rem;
+    }
+
+    /* Section Spacing & Headers */
+    .section-padding { padding: 3.5rem 0; }
+    .section-header { margin-bottom: 2.25rem; }
+    .section-title { font-size: clamp(1.75rem, 6.5vw, 2.35rem); line-height: 1.2; }
+    .section-subtitle { font-size: 0.92rem; line-height: 1.6; }
+
+    /* Page Container */
+    .container-max { padding-left: 1.15rem; padding-right: 1.15rem; }
+
+    /* Manifesto Section */
+    .manifesto-section { padding: 4.5rem 0; }
+    .manifesto-container { padding: 0 1.15rem; }
+    .manifesto-quote { font-size: clamp(1.55rem, 5.2vw, 2.4rem); line-height: 1.28; }
+    .manifesto-stat-num { font-size: 2.2rem; }
+
+    /* About Us Section */
+    .about-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+    .about-section-title {
+        font-size: clamp(1.75rem, 6vw, 2.3rem);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+    .about-lead-text {
+        font-size: 1.05rem;
+        line-height: 1.65;
+        margin-bottom: 1.25rem;
+    }
+    .about-body-text {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+    }
+
+    /* Victories Showcase Gallery */
+    .gallery-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.25rem;
+    }
+    .gallery-card {
+        width: 100% !important;
+        min-height: 260px !important;
+    }
+    .gallery-overlay {
+        padding: 1.25rem 1rem;
+    }
+    .gallery-title {
+        font-size: 1.15rem;
+    }
+    .gallery-caption {
+        font-size: 0.78rem;
+    }
+
+    /* Internship Inauguration */
+    .inaug-wrapper {
+        padding: 1.5rem 1.15rem;
+        gap: 1.75rem;
+        border-radius: 20px;
+    }
+
+    /* 10-Day Bootcamp Carousel */
+    .curriculum-scroller {
+        gap: 1rem;
+        padding-bottom: 1.25rem;
+    }
+    .curriculum-card {
+        flex: 0 0 85vw;
+        max-width: 310px;
+        padding: 1.5rem 1.25rem;
+    }
+
+    /* Asymmetric Bento Grid */
+    .asym-bento-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    .asym-card {
+        border-radius: 20px;
+    }
+    .card-top-left {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 1.75rem 1.25rem;
+        min-height: auto;
+    }
+    .bento-cutout-img {
+        max-height: 180px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 14px;
+    }
+    .card-top-right {
+        min-height: 240px;
+        padding: 1.5rem 1.25rem;
+    }
+    .card-tall-left {
+        min-height: 320px;
+    }
+    .card-banner-right {
+        padding: 1.6rem 1.25rem;
+        min-height: auto;
+    }
+    .card-bottom-cert {
+        padding: 1.5rem 1.25rem;
+        min-height: auto;
+    }
+
+    /* Hardware Architecture Visualizer */
+    .arch-blueprint-box {
+        padding: 1.5rem 1.15rem;
+        border-radius: 20px;
+    }
+    .arch-blueprint-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+    .terminal-wrapper {
+        padding: 1.2rem 0.9rem;
+        border-radius: 14px;
+    }
+    .arch-tab-btn {
+        padding: 0.85rem 1rem;
+    }
+
+    /* AI STEM Advisor */
+    .ai-card {
+        padding: 1.5rem 1.15rem;
+        border-radius: 20px;
+    }
+    .ai-engine-status-bar {
+        padding: 0.6rem 0.75rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    .ai-engine-label {
+        font-size: 0.65rem;
+        word-break: break-word;
+        line-height: 1.35;
+    }
+    .ai-textarea {
+        padding: 1rem 1rem 4rem;
+        font-size: 0.88rem;
+    }
+    .ai-submit-btn {
+        bottom: 0.75rem;
+        right: 0.75rem;
+        padding: 0.5rem 0.95rem;
+        font-size: 0.75rem;
+    }
+    .ai-chips-wrap {
+        gap: 0.45rem;
+    }
+    .ai-chip {
+        font-size: 0.72rem;
+        padding: 0.3rem 0.7rem;
+    }
+    .ai-response-box {
+        padding: 1.25rem 1rem;
+    }
+
+    /* Estimator / Calculator */
+    .calc-wrapper {
+        padding: 1.5rem 1.15rem;
+        border-radius: 20px;
+        gap: 1.5rem;
+    }
+    .calc-summary-card {
+        padding: 1.5rem 1.15rem;
+        border-radius: 16px;
+    }
+    .calc-addons-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Leadership Team Cards */
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+    .team-card {
+        padding: 1.6rem 1.2rem;
+        border-radius: 20px;
+    }
+    .team-photo-wrap {
+        height: 260px;
+    }
+    .team-bio {
+        font-size: 0.84rem;
+        line-height: 1.65;
+    }
+    .team-action-pill {
+        font-size: 0.8rem;
+        padding: 0.65rem 0.85rem;
+    }
+
+    /* Footer CTA Box & Footer Links */
+    .footer-cta-box {
+        padding: 2rem 1.25rem;
+        border-radius: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 3.5rem;
+    }
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    /* General Contact Modal */
+    .modal-overlay {
+        padding: 1rem 0.75rem;
+    }
+    .modal-content {
+        padding: 1.6rem 1.2rem;
+        border-radius: 20px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    .modal-grid-2col {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    /* About Us Modal */
+    .about-modal-box {
+        padding: 1.5rem 1.15rem;
+        border-radius: 20px;
+        width: 95%;
+        max-height: 88vh;
+    }
+    .about-modal-story-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    .about-modal-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+        padding: 1.2rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .about-modal-stat-mid {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0.75rem 0;
+    }
+    .about-modal-founders-grid {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+    }
+    .about-modal-footer {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+        gap: 1rem;
+    }
+    .about-modal-footer > div {
+        justify-content: center;
+    }
+    .about-modal-footer a {
+        text-align: center;
+        justify-content: center;
+    }
+}
+
+/* Compact Mobile Devices (<= 640px) */
 @media (max-width: 640px) {
-    .about-modal-box { padding: 1.5rem; }
-    .about-modal-box div[style*='grid-template-columns:1fr 1fr'] {
-        grid-template-columns: 1fr !important;
-    }
-    .about-modal-box div[style*='grid-template-columns:repeat(3'],
-    .about-modal-box div[style*='grid-template-columns: repeat(3'] {
-        grid-template-columns: 1fr !important;
-    }
+    .site-header { padding: 0.75rem 1rem; }
+    .hero-scroll-container { height: 140vh; }
+    .hero-text-overlay-wrapper { padding: 1rem 0.75rem; }
+    .hero-story-stage { gap: 0.75rem; width: 95%; }
+    .hero-headline { font-size: clamp(2rem, 9.5vw, 3.2rem); line-height: 1.1; }
+    .hero-subheadline { font-size: 0.85rem; line-height: 1.5; }
+    .hero-badge { padding: 0.35rem 0.85rem; font-size: 0.68rem; }
+    .hero-stage-title { font-size: clamp(1.5rem, 6.5vw, 2.2rem); }
+    .hero-stage-desc { font-size: 0.82rem; line-height: 1.5; }
+    .hero-stage-counter { bottom: 1rem; right: 1rem; }
+    .login-link { display: none; }
+    .btn-pill-get-started { padding: 0.42rem 0.9rem; font-size: 0.78rem; }
+    .calc-btn-group { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 

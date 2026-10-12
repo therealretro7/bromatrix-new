@@ -120,7 +120,7 @@ function initTypewriterEffect() {
                 playAnimation();
             }
         });
-    }, { threshold: 0.3 });
+    }, { threshold: 0.1 });
 
     observer.observe(el);
 
@@ -183,8 +183,8 @@ function initFramerMotionAnimations() {
 
     const observerOptions = {
         root: null,
-        rootMargin: '0px 0px -60px 0px',
-        threshold: 0.12
+        rootMargin: '0px 0px 50px 0px',
+        threshold: 0.01
     };
 
     const observer = new IntersectionObserver((entries, obs) => {
@@ -284,12 +284,12 @@ function initHeroScrollSequence() {
         ctx.drawImage(img, drawX, drawY, drawW, drawH);
     }
 
-    // Story Stages Configuration
+    // Story Stages Configuration with continuous coverage (no blank gaps)
     const stages = [
-        { el: document.getElementById('hero-stage-1'), center: 0.12, span: 0.14 },
-        { el: document.getElementById('hero-stage-2'), center: 0.38, span: 0.14 },
-        { el: document.getElementById('hero-stage-3'), center: 0.63, span: 0.14 },
-        { el: document.getElementById('hero-stage-4'), center: 0.88, span: 0.14 }
+        { el: document.getElementById('hero-stage-1'), center: 0.10, span: 0.16 },
+        { el: document.getElementById('hero-stage-2'), center: 0.36, span: 0.18 },
+        { el: document.getElementById('hero-stage-3'), center: 0.64, span: 0.18 },
+        { el: document.getElementById('hero-stage-4'), center: 0.90, span: 0.18 }
     ];
 
     function updateScrollProgress() {
@@ -308,25 +308,53 @@ function initHeroScrollSequence() {
             progressBar.style.width = `${progress * 100}%`;
         }
 
-        // Cross-fade text stages with smooth cosine curve
+        // Cross-fade text stages with smooth cosine curve and no blank gaps
         let activeStageIndex = 0;
         let maxOpacity = 0;
 
         stages.forEach((stage, idx) => {
             if (!stage.el) return;
 
-            const dist = Math.abs(progress - stage.center);
             let opacity = 0;
-            let translateY = 30;
+            let translateY = 0;
 
-            if (dist < stage.span) {
-                const factor = Math.cos((dist / stage.span) * (Math.PI / 2));
-                opacity = factor;
-                translateY = (1 - factor) * (progress < stage.center ? 35 : -35);
+            if (idx === 0) {
+                // First stage: 100% visible from initial load (progress = 0) up to 0.14, then fades out smoothly
+                if (progress <= 0.14) {
+                    opacity = 1;
+                    translateY = 0;
+                } else if (progress <= 0.28) {
+                    const t = (progress - 0.14) / (0.28 - 0.14);
+                    opacity = 0.5 * (1 + Math.cos(t * Math.PI));
+                    translateY = -30 * t;
+                }
+            } else if (idx === stages.length - 1) {
+                // Last stage: fades in smoothly around 0.68, peaks at ~0.80-0.88, then fades out cleanly before the manifesto section appears
+                if (progress >= 0.72 && progress <= 0.88) {
+                    opacity = 1;
+                    translateY = 0;
+                } else if (progress > 0.88) {
+                    const t = (progress - 0.88) / (0.98 - 0.88);
+                    opacity = Math.max(0, 0.5 * (1 + Math.cos(Math.min(t, 1) * Math.PI)));
+                    translateY = -25 * Math.min(t, 1);
+                } else if (progress >= 0.60) {
+                    const t = (0.72 - progress) / (0.72 - 0.60);
+                    opacity = 0.5 * (1 + Math.cos(t * Math.PI));
+                    translateY = 25 * t;
+                }
+            } else {
+                // Intermediate stages
+                const dist = Math.abs(progress - stage.center);
+                if (dist < stage.span) {
+                    const factor = 0.5 * (1 + Math.cos((dist / stage.span) * Math.PI));
+                    opacity = factor;
+                    translateY = (1 - factor) * (progress < stage.center ? 30 : -30);
+                }
             }
 
             stage.el.style.opacity = opacity.toFixed(3);
-            stage.el.style.transform = `translateY(${translateY.toFixed(1)}px)`;
+            // Crucial: preserve center anchoring -50%, -50% and apply slight vertical parallax
+            stage.el.style.transform = `translate(-50%, calc(-50% + ${translateY.toFixed(1)}px))`;
             stage.el.style.pointerEvents = opacity > 0.4 ? 'auto' : 'none';
 
             if (opacity > maxOpacity) {
@@ -338,6 +366,11 @@ function initHeroScrollSequence() {
         // Stage counter (01 to 04)
         if (stageCounter) {
             stageCounter.innerText = String(activeStageIndex + 1).padStart(2, '0');
+            const counterContainer = stageCounter.closest('.hero-stage-counter');
+            if (counterContainer) {
+                const counterOpacity = progress > 0.90 ? Math.max(0, (1 - progress) / 0.10) : 1;
+                counterContainer.style.opacity = counterOpacity.toFixed(2);
+            }
         }
     }
 

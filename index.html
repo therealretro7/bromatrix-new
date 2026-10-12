@@ -23,11 +23,14 @@
     <header class="site-header" id="navbar">
         <div class="header-container">
             <!-- Brand Logo (Left) -->
-
+            <a href="#" class="brand-link">
+                <img src="images/bromatrix-logo.png" alt="Bromatrix" class="brand-logo">
+                <span class="brand-title">BROMATRIX</span>
+            </a>
 
             <!-- Centered Floating Pill Capsule (Reference Replica) -->
             <nav class="nav-capsule">
-                <a href="javascript:void(0)" onclick="openAboutModal()">About Us</a>
+                <a href="about.html">About Us</a>
                 <a href="#team">The Team</a>
                 <a href="#victories">Victories</a>
                 <a href="#curriculum-timeline">10-Day Journey</a>
@@ -52,13 +55,12 @@
 
         <!-- Mobile Drawer Navigation -->
         <div class="mobile-nav-drawer" id="mobile-menu">
-            <a href="javascript:void(0)" onclick="openAboutModal();" class="mobile-link">About Bromatrix</a>
+            <a href="about.html" class="mobile-link">About Bromatrix</a>
             <a href="#team" class="mobile-link">The Leadership Team</a>
             <a href="#manifesto" class="mobile-link">Vision & Philosophy</a>
             <a href="#victories" class="mobile-link">AJEC Victory Showcase</a>
             <a href="#curriculum-timeline" class="mobile-link">10-Day Bootcamp Journey</a>
             <a href="#trainings" class="mobile-link">Core Technical Pillars</a>
-            <a href="#drone-lab" class="mobile-link">3D Holographic Drone Lab</a>
             <a href="#architecture" class="mobile-link">Hardware Topology Flow</a>
             <a href="#ai-assistant" class="mobile-link">Ai STEM Advisor</a>
             <a href="#estimator" class="mobile-link">Scope & Program Estimator</a>
@@ -195,38 +197,7 @@
         </div>
     </section>
 
-    <!-- Section: About Us -->
-    <section class="section-padding" id="about" style="border-bottom: 1px solid var(--border-subtle); background: #050508;">
-        <div class="container-max">
-            <div class="about-hero-grid">
-                <div class="fm-reveal">
-                    <span class="about-stat-pill">
-                        <i class="fa-solid fa-compass"></i> Our Origin &amp; Identity
-                    </span>
-                    <h2 class="section-title" style="text-align: left; font-size: 2.7rem; margin-bottom: 1.25rem;">
-                        Born in a College Lab.<br>Built for the Real World.
-                    </h2>
-                    <p class="about-lead-text">
-                        Bromatrix is a student-founded hardware startup from <strong style="color:#ffffff;">Vimal Jyothi Engineering College, Chemperi</strong> &mdash; built on the belief that real engineering is learned through hands, not slides.
-                    </p>
-                </div>
-                <div class="fm-reveal" style="transition-delay: 0.15s;">
-                    <p class="about-body-text">
-                        What started as three passionate engineers &mdash; an EEE innovator with a DST national grant, a technology enthusiast, and an AI &amp; Data Science specialist &mdash; has grown into a full-spectrum hardware startup. Bromatrix unites <strong style="color: #ffffff;">IoT Connected Telemetry</strong>, <strong style="color: #ffffff;">Autonomous UAV Drones</strong>, <strong style="color: #ffffff;">Intelligent Mechatronics</strong>, and <strong style="color: #ffffff;">Rapid 3D Prototyping</strong> under one mission.
-                    </p>
-                    <p class="about-body-text">
-                        From DST INSPIRE-funded R&amp;D and state-level competition wins, to mentoring 400+ students across engineering campuses &mdash; every project carries genuine, silicon-level experience.
-                    </p>
-                    <div style="display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
-                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-microchip" style="margin-right: 6px;"></i> Embedded Systems</span>
-                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-plane-up" style="margin-right: 6px;"></i> Autonomous UAVs</span>
-                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-cube" style="margin-right: 6px;"></i> 3D CAD &amp; Prototyping</span>
-                        <span class="card-tag" style="padding: 0.5rem 1rem;"><i class="fa-solid fa-bolt" style="margin-right: 6px;"></i> Power Electronics</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Section 2: Champions at Tech-Fest AJEC (Authentic Photos from Link 1) -->
     <section class="section-padding" id="victories">
@@ -751,8 +722,8 @@
     <!-- Section 7: Interactive Hardware System Topology Visualizer -->
     <section class="section-padding" id="architecture" style="background: rgba(255, 255, 255, 0.015); border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);">
         <div class="container-max">
-            <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-medium); border-radius: 28px; padding: 3rem 2.5rem;">
-                <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 3rem; align-items: center;">
+            <div class="arch-blueprint-box">
+                <div class="arch-blueprint-grid">
                     
                     <!-- Left Details -->
                     <div class="fm-reveal">
@@ -1007,7 +978,7 @@
                         <label style="display: block; font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-silver); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.75rem;">
                             3. Add-on Modules & Hardware Kits
                         </label>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+                        <div class="calc-addons-grid">
                             <label style="padding: 0.85rem; border-radius: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle); display: flex; align-items: center; gap: 0.75rem; cursor: pointer; font-size: 0.82rem; color: #d4d4d8;">
                                 <input type="checkbox" onchange="toggleAddon('kits', this.checked)" style="accent-color: #ffffff;">
                                 <span>Take-Home Hardware Kits</span>
@@ -1177,7 +1148,7 @@
     <footer class="site-footer">
         <div class="container-max">
             <!-- CTA Box -->
-            <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-strong); border-radius: 24px; padding: 3.5rem 3rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; margin-bottom: 5rem;" class="fm-reveal">
+            <div class="footer-cta-box fm-reveal">
                 <div style="max-width: 600px;">
                     <h2 class="section-title" style="font-size: 2.2rem; text-align: left; margin-bottom: 0.75rem;">
                         Bring Bromatrix to Your Institution or Lab
@@ -1206,7 +1177,7 @@
                 <div class="footer-col fm-reveal">
                     <h4>Organization</h4>
                     <ul class="footer-links">
-                        <li><a href="javascript:void(0)" onclick="openAboutModal()">About Bromatrix</a></li>
+                        <li><a href="about.html">About Bromatrix</a></li>
                         <li><a href="#team">The Leadership Team</a></li>
                         <li><a href="#victories">AJEC Victory Record</a></li>
                         <li><a href="#trainings">Core Technical Pillars</a></li>
@@ -1283,7 +1254,7 @@
                     <input type="text" id="modal-name" name="entry.2093970937" required class="modal-input" placeholder="e.g. Dr. A. Sharma / Tech University">
                 </div>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="modal-grid-2col">
                     <div>
                         <label for="modal-email" style="font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; color: #a1a1aa;">Email Address</label>
                         <input type="email" id="modal-email" name="entry.740093555" required class="modal-input" placeholder="faculty@institution.edu">
@@ -1334,11 +1305,22 @@
     <!-- Main JavaScript Module -->
     <script src="js/main.js"></script>
 
-    <!-- Embedded drone.glb Binary Data (Supports direct file:/// protocol without CORS) -->
-    <script src="js/drone-model-data.js"></script>
-
-    <!-- Holographic 3D Drone Experience (drone.glb) -->
-    <script src="js/drone-3d.js"></script>
+    <!-- Holographic 3D Drone Experience - Desktop Only (Skipped on mobile to save 73MB & eliminate lag) -->
+    <script>
+        (function() {
+            var isMobile = (window.innerWidth <= 768) || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (!isMobile) {
+                var sData = document.createElement('script');
+                sData.src = 'js/drone-model-data.js';
+                sData.onload = function() {
+                    var s3D = document.createElement('script');
+                    s3D.src = 'js/drone-3d.js';
+                    document.body.appendChild(s3D);
+                };
+                document.body.appendChild(sData);
+            }
+        })();
+    </script>
 
     <!-- ======= ABOUT US POPUP MODAL ======= -->
     <div id="about-modal" class="modal-overlay">
@@ -1361,7 +1343,7 @@
             </div>
 
             <!-- Grid: Story + Highlights -->
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:2rem;">
+            <div class="about-modal-story-grid">
                 <div>
                     <h4 style="font-size:0.78rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:#71717a; margin-bottom:0.75rem;">Our Story</h4>
                     <p style="font-size:0.875rem; color:#d4d4d8; line-height:1.75;">
@@ -1385,12 +1367,12 @@
             </div>
 
             <!-- Stats row -->
-            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; padding:1.5rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:16px; margin-bottom:2rem;">
+            <div class="about-modal-stats-grid">
                 <div style="text-align:center;">
                     <div style="font-family:var(--font-display); font-size:2rem; font-weight:800; color:#fff;">400+</div>
                     <div style="font-size:0.75rem; color:#71717a; margin-top:0.25rem;">Students Mentored</div>
                 </div>
-                <div style="text-align:center; border-left:1px solid rgba(255,255,255,0.08); border-right:1px solid rgba(255,255,255,0.08);">
+                <div class="about-modal-stat-mid">
                     <div style="font-family:var(--font-display); font-size:2rem; font-weight:800; color:#fff;">&#8377;10K</div>
                     <div style="font-size:0.75rem; color:#71717a; margin-top:0.25rem;">DST National Grant</div>
                 </div>
@@ -1403,7 +1385,7 @@
             <!-- Founders Mini Grid -->
             <div style="margin-bottom: 2rem;">
                 <h4 style="font-size:0.78rem; font-family:var(--font-mono); text-transform:uppercase; letter-spacing:0.1em; color:#71717a; margin-bottom:0.75rem;">Founding Team &bull; VJEC Chemperi</h4>
-                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                <div class="about-modal-founders-grid">
                     <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 1rem;">
                         <div style="font-weight: 700; color: #fff; font-size: 0.95rem;">Simon Joseph</div>
                         <div style="font-size: 0.75rem; color: #a1a1aa; margin-top: 0.2rem;">Co-Founder &amp; Hardware Director</div>
@@ -1423,7 +1405,7 @@
             </div>
 
             <!-- College badge & Full profiles action -->
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem; padding:1rem 1.25rem; background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.08); border-radius:12px;">
+            <div class="about-modal-footer">
                 <div style="display:flex; align-items:center; gap:1rem;">
                     <i class="fa-solid fa-school" style="font-size:1.5rem; color:#ffffff;"></i>
                     <div>
@@ -1433,7 +1415,6 @@
                 </div>
                 <a href="#team" onclick="closeAboutModal()" class="btn-monochrome" style="padding: 0.6rem 1.2rem; font-size: 0.8rem; text-decoration: none;">
                     <span>View Full Team Bios &amp; Contacts &rarr;</span>
-                </a>
             </div>
 
         </div>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Bromatrix Innovation Hub</title>
+    <meta name="description" content="Discover Bromatrix - a student-founded hardware startup from Vimal Jyothi Engineering College, Chemperi. Built on real silicon, autonomous drones, IoT, and hands-on engineering.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-pure-black">
+
+    <!-- Floating Capsule Header -->
+    <header class="site-header" id="navbar">
+        <div class="header-container">
+            <a href="index.html" class="brand-link" aria-label="Bromatrix Home">
+                <img src="images/bromatrix-logo.png" alt="Bromatrix Logo" class="brand-logo" />
+                <span class="brand-title">BROMATRIX</span>
+            </a>
+
+            <!-- Centered Floating Pill Capsule -->
+            <nav class="nav-capsule">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active" style="color: #ffffff;">About Us</a>
+                <a href="index.html#team">The Team</a>
+                <a href="index.html#victories">Victories</a>
+                <a href="index.html#trainings">Pillars</a>
+                <a href="index.html#curriculum-timeline">10-Day Journey</a>
+                <a href="index.html#ai-assistant">Ai Advisor</a>
+                <a href="index.html#estimator">Estimator</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="header-actions">
+                <a href="index.html#ai-assistant" class="login-link">Portal</a>
+                <a href="index.html#contact-modal" onclick="openModal('training')" class="btn-pill-get-started" style="text-decoration: none;">
+                    Get started
+                </a>
+                <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div class="mobile-nav-drawer" id="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link" style="color: #ffffff; font-weight: 600;">About Us</a>
+            <a href="index.html#team" class="mobile-link">The Leadership Team</a>
+            <a href="index.html#manifesto" class="mobile-link">Vision & Philosophy</a>
+            <a href="index.html#victories" class="mobile-link">AJEC Victory Showcase</a>
+            <a href="index.html#curriculum-timeline" class="mobile-link">10-Day Bootcamp Journey</a>
+            <a href="index.html#trainings" class="mobile-link">Core Technical Pillars</a>
+            <a href="index.html#estimator" class="mobile-link">Scope & Program Estimator</a>
+            <a href="index.html" class="mobile-link" style="color: #ffffff; font-weight: 600;">Back to Main &rarr;</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding-top: 6.5rem;">
+
+        <!-- Hero Banner for About Us -->
+        <section class="section-padding" style="padding: 5rem 0 3.5rem; border-bottom: 1px solid var(--border-subtle); background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.04) 0%, transparent 65%);">
+            <div class="container-max">
+                <div style="max-width: 860px; margin: 0 auto; text-align: center;">
+                    <span class="section-tag fm-reveal" style="margin-bottom: 1.25rem;">
+                        <i class="fa-solid fa-compass" style="margin-right: 6px;"></i> OUR ORIGIN & IDENTITY
+                    </span>
+                    <h1 class="section-title fm-reveal" style="font-size: clamp(2.4rem, 5.8vw, 4.4rem); line-height: 1.1; margin-bottom: 1.5rem;">
+                        Born in a College Lab.<br><span class="apple-text-shimmer">Built for the Real World.</span>
+                    </h1>
+                    <p class="section-subtitle fm-reveal" style="font-size: clamp(1.05rem, 2vw, 1.3rem); max-width: 740px; margin: 0 auto; line-height: 1.7; color: rgba(255, 255, 255, 0.82);">
+                        Bromatrix is a student-founded hardware startup from <strong>Vimal Jyothi Engineering College, Chemperi</strong> &mdash; built on the rock-solid conviction that true engineering is learned through hands and physical solder, not slides.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Overview Banner -->
+        <section style="background: #08080c; border-bottom: 1px solid var(--border-subtle); padding: 3rem 0;">
+            <div class="container-max">
+                <div class="about-modal-stats-grid" style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 2rem 1.5rem; margin-bottom: 0;">
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; color: #fff;">400+</div>
+                        <div style="font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; margin-top: 0.4rem;">Students Mentored</div>
+                        <div style="font-size: 0.78rem; color: #71717a; margin-top: 0.2rem;">Hands-on workshops & cohorts</div>
+                    </div>
+                    <div class="about-modal-stat-mid" style="text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; color: #fff;">&#8377;10,000</div>
+                        <div style="font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; margin-top: 0.4rem;">DST National Grant</div>
+                        <div style="font-size: 0.78rem; color: #71717a; margin-top: 0.2rem;">Govt. of India INSPIRE Award</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-family: var(--font-display); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800; color: #fff;">02</div>
+                        <div style="font-family: var(--font-mono); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; color: #a1a1aa; margin-top: 0.4rem;">Flagship Cohorts</div>
+                        <div style="font-size: 0.78rem; color: #71717a; margin-top: 0.2rem;">Full-scale UAV & IoT bootcamps</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Deep Story Section -->
+        <section class="section-padding" style="background: #000000; border-bottom: 1px solid var(--border-subtle);">
+            <div class="container-max">
+                <div class="about-hero-grid" style="border-bottom: none; margin-bottom: 0; padding-bottom: 0;">
+                    <div class="fm-reveal">
+                        <span class="about-stat-pill" style="margin-bottom: 1.25rem;">
+                            <i class="fa-solid fa-fire"></i> Our Genesis
+                        </span>
+                        <h2 class="section-title" style="font-size: clamp(2rem, 3.8vw, 2.8rem); line-height: 1.2; text-align: left; margin-bottom: 1.25rem;">
+                            From Dorm Room Experiments to State Championship Podiums.
+                        </h2>
+                        <p class="about-lead-text" style="color: #d4d4d8; font-size: 1.1rem; line-height: 1.75;">
+                            What started as three passionate engineers &mdash; an Electrical & Electronics innovator with a DST national grant, a high-altitude UAV flight specialist, and an AI Systems architect &mdash; has rapidly matured into a full-spectrum hardware startup.
+                        </p>
+                        <p style="color: #a1a1aa; font-size: 0.95rem; line-height: 1.75; margin-top: 1rem;">
+                            Bromatrix bridges the deep divide between university lectures and physical industrial execution. We do not just build slides or abstract theories; we manufacture working avionics, mill customized carbon-PLA drone frames, program bare-metal STM32 and ESP32 registers, and stream real-time IoT telemetry over secured TLS MQTT pipelines.
+                        </p>
+                    </div>
+
+                    <div class="fm-reveal" style="display: flex; flex-direction: column; gap: 1.25rem;">
+                        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-medium); border-radius: 18px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem;">
+                                <i class="fa-solid fa-microchip" style="color: #ffffff;"></i> Silicon-Level Rigor
+                            </h3>
+                            <p style="color: #a1a1aa; font-size: 0.9rem; line-height: 1.65;">
+                                Every board, transceiver, and gyro is bench-tested. Our students and collaborators interact directly with I2C/SPI signals, FreeRTOS tasks, and flight control loops.
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-medium); border-radius: 18px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem;">
+                                <i class="fa-solid fa-plane-up" style="color: #ffffff;"></i> Autonomous Flight Autonomy
+                            </h3>
+                            <p style="color: #a1a1aa; font-size: 0.9rem; line-height: 1.65;">
+                                Custom quadcopter aerodynamics, Betaflight PID configurations, high-voltage LiPo power distribution, and GPS return-to-home fail-safe mechanics.
+                            </p>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-medium); border-radius: 18px; padding: 1.75rem;">
+                            <h3 style="font-size: 1.2rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.6rem;">
+                                <i class="fa-solid fa-graduation-cap" style="color: #ffffff;"></i> Mentorship & Impact
+                            </h3>
+                            <p style="color: #a1a1aa; font-size: 0.9rem; line-height: 1.65;">
+                                Over 400 school and college students mentored through immersive multi-day bootcamps, igniting a genuine engineering mindset across campuses.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Capabilities Grid -->
+        <section class="section-padding" style="background: #050508; border-bottom: 1px solid var(--border-subtle);">
+            <div class="container-max">
+                <div class="section-header">
+                    <span class="section-tag fm-reveal">CORE CAPABILITIES</span>
+                    <h2 class="section-title fm-reveal">What We Build & Engineer</h2>
+                    <p class="section-subtitle fm-reveal">
+                        Bromatrix operates across four tightly-integrated hardware disciplines to create robust, deployable systems.
+                    </p>
+                </div>
+
+                <div class="gallery-grid fm-stagger" style="grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+                    <div class="glow-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 2rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff; margin-bottom: 1.25rem;">
+                            <i class="fa-solid fa-plane"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">Autonomous UAV Drones</h3>
+                        <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                            Aeronautical flight stacks featuring STM32F405 flight controllers, Betaflight 4.4, PX4 autopilot, MPU6000 6-axis gyro calibration, BLHeli_S 30A ESCs, and autonomous GPS waypoint guidance.
+                        </p>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="card-tag">8kHz PID Loop</span>
+                            <span class="card-tag">DShot600</span>
+                            <span class="card-tag">GPS Fail-Safe</span>
+                        </div>
+                    </div>
+
+                    <div class="glow-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 2rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff; margin-bottom: 1.25rem;">
+                            <i class="fa-solid fa-tower-broadcast"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">Connected IoT Telemetry</h3>
+                        <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                            Real-time sensor telemetry pipelines leveraging dual-core ESP32 microcontrollers, FreeRTOS pre-emptive task scheduling, TLS 1.3 cryptography, and sub-40ms cloud dashboard ingestion.
+                        </p>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="card-tag">MQTT TLS</span>
+                            <span class="card-tag">FreeRTOS</span>
+                            <span class="card-tag">LoRa Long-Range</span>
+                        </div>
+                    </div>
+
+                    <div class="glow-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 2rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff; margin-bottom: 1.25rem;">
+                            <i class="fa-solid fa-cube"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">Additive 3D CAD Prototyping</h3>
+                        <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                            Parametric aerospace structural design in Autodesk Fusion 360, slicing optimization in Ultimaker Cura, and precision FDM printing with high-tensile Carbon-PLA and PETG.
+                        </p>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="card-tag">0.05mm Rigor</span>
+                            <span class="card-tag">Carbon-PLA</span>
+                            <span class="card-tag">Fusion 360</span>
+                        </div>
+                    </div>
+
+                    <div class="glow-card" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-subtle); border-radius: 20px; padding: 2rem;">
+                        <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: #fff; margin-bottom: 1.25rem;">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <h3 style="font-size: 1.3rem; font-weight: 700; color: #fff; margin-bottom: 0.75rem;">Power Electronics &amp; Mechatronics</h3>
+                        <p style="color: #a1a1aa; font-size: 0.88rem; line-height: 1.7; margin-bottom: 1.25rem;">
+                            High-current battery management, DC-DC buck regulation, closed-loop PID encoder control, and state-of-the-art power distribution boards engineered for harsh environments.
+                        </p>
+                        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                            <span class="card-tag">Closed-Loop PID</span>
+                            <span class="card-tag">LiPo Regulators</span>
+                            <span class="card-tag">High-Torque Servos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Institutional Roots Section -->
+        <section class="section-padding" style="background: #000000; border-bottom: 1px solid var(--border-subtle);">
+            <div class="container-max" style="max-width: 960px;">
+                <div style="background: rgba(255, 255, 255, 0.025); border: 1px solid var(--border-medium); border-radius: 24px; padding: clamp(2rem, 5vw, 3.5rem); display: flex; flex-direction: column; align-items: center; text-align: center; gap: 1.5rem;">
+                    <div style="width: 64px; height: 64px; border-radius: 16px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff;">
+                        <i class="fa-solid fa-school"></i>
+                    </div>
+                    <span class="section-tag">INSTITUTIONAL FOUNDATION</span>
+                    <h2 style="font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #fff; line-height: 1.2;">
+                        Vimal Jyothi Engineering College, Chemperi
+                    </h2>
+                    <p style="color: #a1a1aa; font-size: 1rem; line-height: 1.75; max-width: 720px;">
+                        Nestled in Chemperi, Kannur, Kerala &mdash; VJEC provides the state-of-the-art laboratory infrastructure, research incubation support, and academic backing where Bromatrix was incubated and continues to advance physical hardware research.
+                    </p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 0.5rem;">
+                        <a href="index.html#team" class="btn-monochrome" style="text-decoration: none; padding: 0.85rem 1.75rem;">
+                            <span>Meet the Founding Team</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="index.html#victories" class="btn-pill-get-started" style="text-decoration: none; padding: 0.85rem 1.75rem; font-size: 0.9rem;">
+                            <span>View Championship Victories</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer style="background: #000000; padding: 4.5rem 0 2rem; border-top: 1px solid var(--border-subtle);">
+        <div class="container-max">
+            <div class="footer-grid fm-stagger" style="margin-bottom: 3.5rem;">
+                <div class="footer-col fm-reveal">
+                    <a href="index.html" class="brand-link" style="margin-bottom: 1.25rem; display: inline-block;">
+                        <img src="images/bromatrix-logo.png" alt="BROMATRIX" class="footer-logo" />
+                    </a>
+                    <p style="font-size: 0.82rem; color: #71717a; line-height: 1.7; max-width: 320px;">
+                        A student-founded hardware startup from Vimal Jyothi Engineering College, Chemperi. Advancing STEM through UAV drones, embedded systems, IoT, and hands-on engineering education.
+                    </p>
+                </div>
+
+                <div class="footer-col fm-reveal">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Main Home</a></li>
+                        <li><a href="about.html" style="color: #ffffff; font-weight: 600;">About Us</a></li>
+                        <li><a href="index.html#team">The Leadership Team</a></li>
+                        <li><a href="index.html#victories">AJEC Victory Record</a></li>
+                        <li><a href="index.html#trainings">Core Technical Pillars</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col fm-reveal">
+                    <h4>Interactive Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#ai-assistant">AI STEM Advisor</a></li>
+                        <li><a href="index.html#architecture">Hardware Flow Blueprints</a></li>
+                        <li><a href="index.html#estimator">Scope Calculator</a></li>
+                        <li><a href="index.html#curriculum-timeline">10-Day Curriculum</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col fm-reveal">
+                    <h4>Connect</h4>
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
+                        <a href="https://www.linkedin.com/in/simon-joseph-538a7b357/" target="_blank" rel="noopener noreferrer" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://wa.me/919061136839" target="_blank" rel="noopener noreferrer" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #71717a;">
+                        Status: <span style="color: #ffffff;">Accepting Workshop Enquiries</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="footer-bottom">
+                <div>&copy; 2026 Bromatrix Innovation Hub. All rights reserved.</div>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="index.html" style="color: #71717a; text-decoration: none;">Home</a>
+                    <a href="about.html" style="color: #71717a; text-decoration: none;">About</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS for animations & mobile nav -->
+    <script src="js/main.js"></script>
+</body>
+</html>
