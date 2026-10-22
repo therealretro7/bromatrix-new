@@ -5,7 +5,10 @@ Desktop.ini
 $RECYCLE.BIN/
 .DS_Store
 
-# Editor directories and files
+# Archives
+*.zip
+*.tar.gz
+*.rar
 .vscode/
 .idea/
 *.sublime-project
