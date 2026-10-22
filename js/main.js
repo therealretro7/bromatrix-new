@@ -1014,6 +1014,8 @@ function initModalHandlers() {
         }
     };
 
+    let lastFormSubmitTime = 0;
+
     window.handleFormSubmit = async function(e) {
         e.preventDefault();
         const formEl = document.getElementById('contact-form');
@@ -1021,6 +1023,27 @@ function initModalHandlers() {
         const submitLabel = document.getElementById('modal-submit-label');
         const successEl = document.getElementById('modal-success');
         if (!formEl) return;
+
+        // Anti-Bot Honeypot Verification
+        const honeypot = document.getElementById('modal-honeypot');
+        if (honeypot && honeypot.value.trim() !== '') {
+            // Silently pretend success to trap malicious spam bots
+            if (formEl) formEl.style.display = 'none';
+            if (successEl) successEl.style.display = 'block';
+            setTimeout(() => {
+                if (formEl) formEl.reset();
+                window.closeModal();
+            }, 1800);
+            return;
+        }
+
+        // Rate Limiting Protection (enforce 6s cooldown between submissions)
+        const now = Date.now();
+        if (now - lastFormSubmitTime < 6000) {
+            alert('Please wait a few moments before transmitting another enquiry.');
+            return;
+        }
+        lastFormSubmitTime = now;
 
         if (submitBtn) {
             submitBtn.disabled = true;
@@ -1030,6 +1053,15 @@ function initModalHandlers() {
         }
 
         const formData = new FormData(formEl);
+        formData.delete('_anti_bot_trap'); // Exclude honeypot from transmitted payload
+
+        // Sanitize string inputs (strip dangerous HTML tags and trim)
+        for (let [key, val] of Array.from(formData.entries())) {
+            if (typeof val === 'string') {
+                formData.set(key, val.replace(/<[^>]*>/g, '').trim());
+            }
+        }
+
         const actionUrl = formEl.getAttribute('action') || 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdvgHHZ3TcUOMpdW74oYFwD8hqpg3tUbBUoMZsfGdVpEj1taw/formResponse';
 
         try {
