@@ -54,12 +54,14 @@ html {
     background-color: var(--bg-black);
     color: var(--text-silver);
     overflow-x: hidden;
+    overflow-x: clip;
 }
 
 body {
     font-family: var(--font-sans);
     line-height: 1.6;
     overflow-x: hidden;
+    overflow-x: clip;
     position: relative;
     background-color: var(--bg-black);
     -webkit-font-smoothing: antialiased;
@@ -425,7 +427,7 @@ body {
 .hero-scroll-container {
     position: relative;
     width: 100%;
-    height: 175vh; /* Fast, responsive, seamless transition to next section */
+    height: 420vh; /* Dedicated scroll runway for 120 frames & 4 narrative stages */
     background-color: #000000;
 }
 
@@ -493,7 +495,7 @@ body {
     width: 0%;
     background: #ffffff;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
-    transition: width 0.05s linear;
+    transition: none;
 }
 
 /* Text Overlay Wrapper on Top of Canvas */
@@ -523,7 +525,7 @@ body {
     text-align: center;
     gap: 1.25rem;
     opacity: 0;
-    transition: opacity 0.25s var(--ease-apple);
+    transition: none;
     will-change: opacity, transform;
 }
 
@@ -3309,9 +3311,9 @@ body.theme-cosmic #cursor-dot {
         display: none !important;
     }
 
-    /* Hero Section Mobile Optimization (Prevents scroll fatigue and blank gaps) */
+    /* Hero Section Mobile Optimization (Full 120-frame animation runway) */
     .hero-scroll-container {
-        height: 150vh;
+        height: 350vh;
     }
     .hero-story-stage {
         width: 92%;
@@ -3601,7 +3603,7 @@ body.theme-cosmic #cursor-dot {
 /* Compact Mobile Devices (<= 640px) */
 @media (max-width: 640px) {
     .site-header { padding: 0.75rem 1rem; }
-    .hero-scroll-container { height: 140vh; }
+    .hero-scroll-container { height: 300vh; }
     .hero-text-overlay-wrapper { padding: 1rem 0.75rem; }
     .hero-story-stage { gap: 0.75rem; width: 95%; }
     .hero-headline { font-size: clamp(2rem, 9.5vw, 3.2rem); line-height: 1.1; }

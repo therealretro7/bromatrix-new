@@ -225,6 +225,8 @@ function initHeroScrollSequence() {
     let currentFrame = 0;
     let isTicking = false;
 
+    let currentProgress = 0;
+
     // Helper for formatted frame URL (ezgif-frame-001.png to ezgif-frame-120.png)
     function getFrameSrc(index) {
         const num = String(index).padStart(3, '0');
@@ -289,7 +291,7 @@ function initHeroScrollSequence() {
         { el: document.getElementById('hero-stage-1'), center: 0.10, span: 0.16 },
         { el: document.getElementById('hero-stage-2'), center: 0.36, span: 0.18 },
         { el: document.getElementById('hero-stage-3'), center: 0.64, span: 0.18 },
-        { el: document.getElementById('hero-stage-4'), center: 0.90, span: 0.18 }
+        { el: document.getElementById('hero-stage-4'), center: 0.88, span: 0.18 }
     ];
 
     function updateScrollProgress() {
@@ -299,9 +301,16 @@ function initHeroScrollSequence() {
 
         const rawProgress = -rect.top / totalScrollable;
         const progress = Math.min(Math.max(rawProgress, 0), 1);
+        currentProgress = progress;
 
-        // Frame target
-        targetFrame = progress * (TOTAL_FRAMES - 1);
+        // Frame target (0 to 119)
+        if (progress >= 0.99) {
+            targetFrame = TOTAL_FRAMES - 1;
+        } else if (progress <= 0.005) {
+            targetFrame = 0;
+        } else {
+            targetFrame = progress * (TOTAL_FRAMES - 1);
+        }
 
         // Progress bar width
         if (progressBar) {
@@ -329,16 +338,16 @@ function initHeroScrollSequence() {
                     translateY = -30 * t;
                 }
             } else if (idx === stages.length - 1) {
-                // Last stage: fades in smoothly around 0.68, peaks at ~0.80-0.88, then fades out cleanly before the manifesto section appears
-                if (progress >= 0.72 && progress <= 0.88) {
+                // Last stage: fades in smoothly around 0.68, peaks at ~0.78-0.90, then fades out cleanly before the manifesto section appears
+                if (progress >= 0.72 && progress <= 0.90) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress > 0.88) {
-                    const t = (progress - 0.88) / (0.98 - 0.88);
+                } else if (progress > 0.90) {
+                    const t = (progress - 0.90) / (0.99 - 0.90);
                     opacity = Math.max(0, 0.5 * (1 + Math.cos(Math.min(t, 1) * Math.PI)));
                     translateY = -25 * Math.min(t, 1);
-                } else if (progress >= 0.60) {
-                    const t = (0.72 - progress) / (0.72 - 0.60);
+                } else if (progress >= 0.58) {
+                    const t = (0.72 - progress) / (0.72 - 0.58);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = 25 * t;
                 }
@@ -377,8 +386,15 @@ function initHeroScrollSequence() {
     // Apple-style smooth lerp loop
     function loop() {
         const diff = targetFrame - currentFrame;
-        if (Math.abs(diff) > 0.01) {
-            currentFrame += diff * 0.15;
+        if (Math.abs(diff) > 0.005) {
+            // Adaptive lerp: snappy when scrolling fast, smooth when settling
+            const lerpFactor = Math.abs(diff) > 6 ? 0.35 : 0.22;
+            currentFrame += diff * lerpFactor;
+
+            // Guarantee clean arrival at endpoints
+            if (currentProgress <= 0.005 && currentFrame < 0.5) currentFrame = 0;
+            if (currentProgress >= 0.985 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
+
             renderFrame(Math.round(currentFrame));
         }
 
