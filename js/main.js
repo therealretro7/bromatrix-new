@@ -389,10 +389,10 @@ function initHeroScrollSequence() {
 
     // Story Stages Configuration — wider spans eliminate opacity gaps between stages
     const stages = [
-        { el: document.getElementById('hero-stage-1'), center: 0.08, span: 0.18 },
-        { el: document.getElementById('hero-stage-2'), center: 0.33, span: 0.25 },
-        { el: document.getElementById('hero-stage-3'), center: 0.57, span: 0.25 },
-        { el: document.getElementById('hero-stage-4'), center: 0.84, span: 0.18 }
+        { el: document.getElementById('hero-stage-1'), center: 0.10, span: 0.18 },
+        { el: document.getElementById('hero-stage-2'), center: 0.35, span: 0.22 },
+        { el: document.getElementById('hero-stage-3'), center: 0.60, span: 0.22 },
+        { el: document.getElementById('hero-stage-4'), center: 0.85, span: 0.18 }
     ];
 
     function updateScrollProgress() {
@@ -404,27 +404,22 @@ function initHeroScrollSequence() {
         const progress = Math.min(Math.max(rawProgress, 0), 1);
         currentProgress = progress;
 
-        const isMobile = window.innerWidth <= 768;
-        // On mobile, complete the 120-frame scrubbing by 0.58 so the animation finishes well
-        // before the user's momentum scroll exits the hero section (fast swipes / fling)
-        const completeThreshold = isMobile ? 0.58 : 0.80;
+        // Complete 120-frame deconstruction sequence by 85% scroll runway
+        // Remaining 85%-100% displays the final exploded hardware stage before natural unpinning
+        const completeThreshold = 0.85;
 
         if (progress <= 0.005) {
             targetFrame = 0;
         } else if (progress >= completeThreshold) {
-            targetFrame = TOTAL_FRAMES - 1; // Frame 119: 100% completely revealed
+            targetFrame = TOTAL_FRAMES - 1;
         } else {
             targetFrame = (progress / completeThreshold) * (TOTAL_FRAMES - 1);
         }
 
-        // When moving to or past the transition zone to another section, immediately snap to 100% completion
-        if (rawProgress >= (isMobile ? 0.60 : 0.85)) {
+        if (rawProgress >= 0.98) {
             targetFrame = TOTAL_FRAMES - 1;
             currentFrame = TOTAL_FRAMES - 1;
             renderFrame(TOTAL_FRAMES - 1);
-        } else {
-            // Always render the best available frame immediately on scroll (no waiting for lerp)
-            renderFrame(Math.round(targetFrame));
         }
 
         // Proactively preload surrounding frames on scroll
@@ -446,27 +441,26 @@ function initHeroScrollSequence() {
             let translateY = 0;
 
             if (idx === 0) {
-                // First stage: full opacity from 0 → 0.18, then cosine fade-out until 0.34
-                // Overlaps stage 2 so there's never a visibility gap
+                // First stage: full opacity from 0 → 0.18, then cosine fade-out until 0.32
                 if (progress <= 0.18) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress <= 0.34) {
-                    const t = (progress - 0.18) / (0.34 - 0.18);
+                } else if (progress <= 0.32) {
+                    const t = (progress - 0.18) / (0.32 - 0.18);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = -30 * t;
                 }
             } else if (idx === stages.length - 1) {
-                // Last stage: fades in at 0.62, peaks at 0.76-0.94, then fades cleanly
-                if (progress >= 0.76 && progress <= 0.94) {
+                // Last stage: fades in at 0.65, peaks at 0.76-0.92, then cleanly fades as hero ends
+                if (progress >= 0.76 && progress <= 0.92) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress > 0.94) {
-                    const t = (progress - 0.94) / (0.99 - 0.94);
+                } else if (progress > 0.92) {
+                    const t = (progress - 0.92) / (0.99 - 0.92);
                     opacity = Math.max(0, 0.5 * (1 + Math.cos(Math.min(t, 1) * Math.PI)));
                     translateY = -25 * Math.min(t, 1);
-                } else if (progress >= 0.62) {
-                    const t = (0.76 - progress) / (0.76 - 0.62);
+                } else if (progress >= 0.65) {
+                    const t = (0.76 - progress) / (0.76 - 0.65);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = 25 * t;
                 }
@@ -506,14 +500,12 @@ function initHeroScrollSequence() {
         const diff = targetFrame - currentFrame;
         if (Math.abs(diff) > 0.005) {
             const isMobile = window.innerWidth <= 768;
-            // On mobile, use responsive lerp factor so animation tracks finger and finishes completely
-            const lerpFactor = isMobile ? 0.75 : (Math.abs(diff) > 6 ? 0.38 : 0.25);
+            const lerpFactor = isMobile ? 0.45 : (Math.abs(diff) > 6 ? 0.35 : 0.22);
             currentFrame += diff * lerpFactor;
 
-            // Guarantee clean arrival at endpoints
-            const finishThreshold = isMobile ? 0.58 : 0.80;
+            // Clean arrival at endpoints
             if (currentProgress <= 0.005 && currentFrame < 0.5) currentFrame = 0;
-            if (currentProgress >= finishThreshold && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
+            if (currentProgress >= 0.85 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
 
             renderFrame(Math.round(currentFrame));
             preloadWindow(Math.round(currentFrame), 12);
@@ -521,27 +513,6 @@ function initHeroScrollSequence() {
 
         requestAnimationFrame(loop);
     }
-
-    // --- Mobile touch: snap animation to complete on fast downward swipe ---
-    let touchStartY = 0;
-    window.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-        const touchEndY = e.changedTouches[0].clientY;
-        const swipeDelta = touchStartY - touchEndY; // positive = swipe up (scroll down)
-        const rect = container.getBoundingClientRect();
-        const totalScrollable = container.offsetHeight - window.innerHeight;
-        const progress = totalScrollable > 0 ? -rect.top / totalScrollable : 0;
-
-        // If user is inside the hero section and did a fast downward flick, snap animation to end immediately
-        if (swipeDelta > 40 && progress > 0.05 && progress < 0.95) {
-            targetFrame = TOTAL_FRAMES - 1;
-            currentFrame = TOTAL_FRAMES - 1;
-            renderFrame(TOTAL_FRAMES - 1);
-        }
-    }, { passive: true });
 
     window.addEventListener('resize', () => {
         resizeCanvas();

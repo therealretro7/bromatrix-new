@@ -3520,7 +3520,7 @@ body.theme-cosmic #cursor-dot {
 /* ---- Tablet (≤ 1024px) ---- */
 @media (max-width: 1024px) {
     html, body {
-        overflow-x: hidden !important;
+        overflow-x: clip !important;
         max-width: 100vw !important;
     }
 
@@ -3598,7 +3598,7 @@ body.theme-cosmic #cursor-dot {
 /* ---- Mobile Phones (≤ 768px) ---- */
 @media (max-width: 768px) {
     html, body {
-        overflow-x: hidden !important;
+        overflow-x: clip !important;
         max-width: 100vw !important;
         position: relative !important;
     }
@@ -3664,13 +3664,27 @@ body.theme-cosmic #cursor-dot {
 
     /* ---- Hero Scroll Section ---- */
     .hero-scroll-container {
+        position: relative !important;
+        width: 100% !important;
         height: 420vh !important;
         max-width: 100vw !important;
-        overflow-x: hidden !important;
+        background-color: #000000 !important;
     }
     .hero-sticky-viewport {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100vh !important;
+        height: 100dvh !important;
         max-width: 100vw !important;
         overflow: hidden !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background-color: #000000 !important;
+        z-index: 5 !important;
     }
     .hero-text-overlay-wrapper {
         padding: 1rem 0.75rem !important;
@@ -3929,7 +3943,7 @@ body.theme-cosmic #cursor-dot {
         width: 34px !important;
         height: 34px !important;
     }
-    .hero-scroll-container { height: 380vh !important; }
+    .hero-scroll-container { height: 420vh !important; }
     .hero-headline { font-size: clamp(1.65rem, 8vw, 2.1rem) !important; }
     .hero-subheadline { font-size: 0.82rem !important; line-height: 1.5 !important; }
     .hero-badge { font-size: 0.58rem !important; padding: 0.3rem 0.65rem !important; }
