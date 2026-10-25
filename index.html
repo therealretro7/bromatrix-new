@@ -10,16 +10,28 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!-- Fonts -->
+    <!-- Website Favicon & Brand Icon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <!-- Preload first hero frame for instant above-the-fold display -->
+    <link rel="preload" href="Public/Images/Hero section/ezgif-frame-001.png" as="image">
+
+    <!-- Fonts (non-blocking async load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
 
-    <!-- Font Awesome Icons with Subresource Integrity -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome Icons (non-blocking async load) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 
     <!-- Custom Modular Stylesheet (Apple Monochrome Edition) -->
     <link rel="stylesheet" href="css/styles.css">
+
+    <!-- ThreeUI Component Styles -->
+    <link rel="stylesheet" href="src/shaders/threeui.css">
 </head>
 <body class="bg-subtle-grid">
 
@@ -34,6 +46,7 @@
             <!-- Centered Floating Pill Capsule (Reference Replica) -->
             <nav class="nav-capsule">
                 <a href="about.html">About Us</a>
+                <a href="events.html">Events</a>
                 <a href="#team">The Team</a>
                 <a href="#victories">Victories</a>
                 <a href="#curriculum-timeline">10-Day Journey</a>
@@ -46,9 +59,18 @@
 
             <!-- Actions (Right - Reference Replica) -->
             <div class="header-actions">
-                <a href="#ai-assistant" class="login-link">Portal</a>
-                <button onclick="openModal('training')" class="btn-pill-get-started">
-                    Get started
+                <button onclick="openModal('training')" class="btn-pill-get-started threeui-glassmorphism-cta" style="border: none; background: transparent; padding: 0;">
+                    <div class="shimmer-track"><div class="shimmer-rotator"><div class="shimmer-gradient"></div></div></div>
+                    <div class="glass-cut"></div>
+                    <div class="glass-content">
+                        <div class="glass-beam"></div>
+                        <div class="glass-backing"></div>
+                        <img src="images/advisor-headshot.jpg" alt="Advisor" class="glass-avatar">
+                        <span class="glass-text">Get started</span>
+                        <span class="glass-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>
+                        </span>
+                    </div>
                 </button>
                 <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
@@ -59,6 +81,7 @@
         <!-- Mobile Drawer Navigation -->
         <div class="mobile-nav-drawer" id="mobile-menu">
             <a href="about.html" class="mobile-link">About Bromatrix</a>
+            <a href="events.html" class="mobile-link">Our Events</a>
             <a href="#team" class="mobile-link">The Leadership Team</a>
             <a href="#manifesto" class="mobile-link">Vision & Philosophy</a>
             <a href="#victories" class="mobile-link">AJEC Victory Showcase</a>
@@ -218,7 +241,7 @@
             <div class="gallery-grid fm-stagger">
                 <!-- Large Feature Card 1 -->
                 <div class="gallery-card bento-col-8 fm-scale" style="min-height: 380px;">
-                    <img src="images/ajec_win_1.webp" alt="Bromatrix Victory at AJEC Tech-Fest" class="gallery-img">
+                    <img loading="lazy" src="images/ajec_win_1.webp" alt="Bromatrix Victory at AJEC Tech-Fest" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Championship Victory &bull; Amal Jyothi College</div>
                         <div class="gallery-caption">Bromatrix team celebrating our first official championship podium victory with faculty mentors and technical jurors.</div>
@@ -227,7 +250,7 @@
 
                 <!-- Secondary Card 2 -->
                 <div class="gallery-card bento-col-4 fm-scale" style="min-height: 380px;">
-                    <img src="images/ajec_win_2.webp" alt="Bromatrix Team with Trophy" class="gallery-img">
+                    <img loading="lazy" src="images/ajec_win_2.webp" alt="Bromatrix Team with Trophy" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Verified Honors</div>
                         <div class="gallery-caption">Official recognition for superior drone maneuverability and autonomous sensor performance.</div>
@@ -236,7 +259,7 @@
 
                 <!-- Card 3 -->
                 <div class="gallery-card bento-col-4 fm-scale" style="min-height: 320px;">
-                    <img src="images/ajec_win_3.webp" alt="Bromatrix Engineering Mentors" class="gallery-img">
+                    <img loading="lazy" src="images/ajec_win_3.webp" alt="Bromatrix Engineering Mentors" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Mentor Leadership</div>
                         <div class="gallery-caption">Hands-on guidance and technical debrief with institutional department heads.</div>
@@ -245,7 +268,7 @@
 
                 <!-- Card 4 -->
                 <div class="gallery-card bento-col-4 fm-scale" style="min-height: 320px;">
-                    <img src="images/ajec_win_4.webp" alt="AJEC Tech Fest Celebration" class="gallery-img">
+                    <img loading="lazy" src="images/ajec_win_4.webp" alt="AJEC Tech Fest Celebration" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Engineering Camaraderie</div>
                         <div class="gallery-caption">Inspiring the next generation of robotics innovators and flight engineers.</div>
@@ -254,7 +277,7 @@
 
                 <!-- Card 5 (Techfest Action) -->
                 <div class="gallery-card bento-col-4 fm-scale" style="min-height: 320px;">
-                    <img src="images/ajec_techfest.jpg" alt="Live Techfest Arena Action" class="gallery-img">
+                    <img loading="lazy" src="images/ajec_techfest.jpg" alt="Live Techfest Arena Action" class="gallery-img">
                     <div class="gallery-overlay">
                         <div class="gallery-title">Arena Trials</div>
                         <div class="gallery-caption">Real-time live telemetry testing and autonomous navigation benchmarks.</div>
@@ -299,7 +322,7 @@
 
                 <!-- Right Photo Feature -->
                 <div class="inaug-photo-stack fm-scale">
-                    <img src="images/internship_banner.webp" alt="Inauguration of Bromatrix Summer Internship">
+                    <img loading="lazy" src="images/internship_banner.webp" alt="Inauguration of Bromatrix Summer Internship">
                 </div>
             </div>
         </div>
@@ -348,7 +371,7 @@
                         <p>Inaugural orientation, toolchain setup, ESP32 dual-core Xtensa pinout mapping, and low-level GPIO register programming.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_1.jpg" alt="Day 1 Hands-on lab">
+                        <img loading="lazy" src="images/workshop_action_1.jpg" alt="Day 1 Hands-on lab">
                     </div>
                 </div>
 
@@ -360,7 +383,7 @@
                         <p>ADC calibration, analog sampling, temperature/humidity sensors (DHT22), ultrasonic distance ranging, and noise filtering.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_2.jpg" alt="Day 2 Sensor wiring">
+                        <img loading="lazy" src="images/workshop_action_2.jpg" alt="Day 2 Sensor wiring">
                     </div>
                 </div>
 
@@ -372,7 +395,7 @@
                         <p>Real-Time Operating System tasks, hardware timers, ISR (Interrupt Service Routines), and asynchronous C/C++ firmware pipelines.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_3.jpg" alt="Day 3 Firmware Coding">
+                        <img loading="lazy" src="images/workshop_action_3.jpg" alt="Day 3 Firmware Coding">
                     </div>
                 </div>
 
@@ -384,7 +407,7 @@
                         <p>Wi-Fi station configuration, TLS sockets, publish/subscribe MQTT broker clustering, and live web telemetry dashboards.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_4.jpg" alt="Day 4 IoT Dashboards">
+                        <img loading="lazy" src="images/workshop_action_4.jpg" alt="Day 4 IoT Dashboards">
                     </div>
                 </div>
 
@@ -396,7 +419,7 @@
                         <p>Quadcopter frame dynamics, thrust-to-weight ratios, 6-axis IMU gyro calibration, and Betaflight flight controller tuning.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_5.jpg" alt="Day 5 Drone Assembly">
+                        <img loading="lazy" src="images/workshop_action_5.jpg" alt="Day 5 Drone Assembly">
                     </div>
                 </div>
 
@@ -408,7 +431,7 @@
                         <p>Brushless DC motors, DShot600 electronic speed controllers, LiPo battery power distribution boards, and 2.4GHz RF pairing.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_6.jpg" alt="Day 6 ESC Soldering">
+                        <img loading="lazy" src="images/workshop_action_6.jpg" alt="Day 6 ESC Soldering">
                     </div>
                 </div>
 
@@ -420,7 +443,7 @@
                         <p>Dual H-bridge motor drivers, differential drive geometry, IR array sensor bar, and closed-loop PID autonomous track following.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_1.jpg" alt="Day 7 Robotics Track">
+                        <img loading="lazy" src="images/workshop_action_1.jpg" alt="Day 7 Robotics Track">
                     </div>
                 </div>
 
@@ -432,7 +455,7 @@
                         <p>Parametric sketching, mechanical constraint engineering, shell thickness, snap-fit tolerances, and custom hardware enclosures.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_2.jpg" alt="Day 8 CAD Modeling">
+                        <img loading="lazy" src="images/workshop_action_2.jpg" alt="Day 8 CAD Modeling">
                     </div>
                 </div>
 
@@ -444,7 +467,7 @@
                         <p>G-code generation, layer heights, infill densities, FDM 3D printer calibration, bed leveling, and rapid prototype fabrication.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/workshop_action_3.jpg" alt="Day 9 3D Printing">
+                        <img loading="lazy" src="images/workshop_action_3.jpg" alt="Day 9 3D Printing">
                     </div>
                 </div>
 
@@ -456,7 +479,7 @@
                         <p>Live flight testing arena, Roborace speed trial challenge, capstone technical presentation, and verified credential awards.</p>
                     </div>
                     <div class="curriculum-photo-thumb">
-                        <img src="images/internship_inaug_1.webp" alt="Day 10 Showcase and Graduation">
+                        <img loading="lazy" src="images/internship_inaug_1.webp" alt="Day 10 Showcase and Graduation">
                     </div>
                 </div>
             </div>
@@ -496,13 +519,13 @@
                         </p>
                     </div>
                     <div class="card-inner-right">
-                        <img src="images/workshop_action_1.jpg" alt="Bromatrix Hardware Research Team" class="bento-cutout-img">
+                        <img loading="lazy" src="images/workshop_action_1.jpg" alt="Bromatrix Hardware Research Team" class="bento-cutout-img">
                     </div>
                 </div>
 
                 <!-- CARD 2 (Top Right - Action Image + Quad Badge ~33%) -->
                 <div class="asym-card card-top-right fm-scale">
-                    <img src="images/workshop_action_2.jpg" alt="Autonomous Flight Bench" class="card-bg-img">
+                    <img loading="lazy" src="images/workshop_action_2.jpg" alt="Autonomous Flight Bench" class="card-bg-img">
                     <div class="card-gradient-overlay"></div>
                     <div class="card-header-badge">
                         <div class="quad-circular-badge">
@@ -518,7 +541,7 @@
 
                 <!-- CARD 3 (Middle-Bottom Left - Tall Vertical Portrait Card, Spans Rows 2 & 3 ~33%) -->
                 <div class="asym-card card-tall-left fm-scale">
-                    <img src="images/ajec_win_1.webp" alt="AJCE State Tech-Fest Victory" class="card-bg-img tall-img">
+                    <img loading="lazy" src="images/ajec_win_1.webp" alt="AJCE State Tech-Fest Victory" class="card-bg-img tall-img">
                     <div class="card-tall-gradient"></div>
                     <div class="tall-top-badge">
                         <span class="pulsing-radar-dot"></span>
@@ -558,7 +581,7 @@
                         <p class="cert-subtext">State-accredited engineering portfolio credentials and verified hardware repositories.</p>
                     </div>
                     <div class="cert-image-wrap">
-                        <img src="images/internship_inaug_1.webp" alt="Bromatrix Certified Credentials">
+                        <img loading="lazy" src="images/internship_inaug_1.webp" alt="Bromatrix Certified Credentials">
                     </div>
                 </div>
 
@@ -693,7 +716,7 @@
                 <!-- User Gesture Interaction Legend -->
                 <div class="drone-gesture-legend">
                     <span><i class="fa-solid fa-hand-pointer"></i> Drag to Rotate</span>
-                    <span><i class="fa-solid fa-magnifying-glass-plus"></i> Scroll / Pinch to Zoom</span>
+                    <span><i class="fa-solid fa-magnifying-glass-plus"></i> Alt + Scroll to Zoom</span>
                     <span><i class="fa-solid fa-arrows-up-down-left-right"></i> Right-Click to Pan</span>
                     <span><i class="fa-solid fa-sparkles"></i> Release to Float</span>
                 </div>
@@ -1055,7 +1078,7 @@
                     <div>
                         <div class="team-photo-wrap">
                             <span class="team-floating-badge">Co-Founder</span>
-                            <img src="images/team_simon_joseph.jpg" alt="Simon Joseph" class="team-photo-img">
+                            <img loading="lazy" src="images/team_simon_joseph.jpg" alt="Simon Joseph" class="team-photo-img">
                             <div class="team-photo-overlay"></div>
                         </div>
                         <h3 class="team-name">Simon Joseph</h3>
@@ -1087,7 +1110,7 @@
                     <div>
                         <div class="team-photo-wrap">
                             <span class="team-floating-badge">Co-Founder</span>
-                            <img src="images/team_ajith_mathew.jpg" alt="Ajith Mathew" class="team-photo-img">
+                            <img loading="lazy" src="images/team_ajith_mathew.jpg" alt="Ajith Mathew" class="team-photo-img">
                             <div class="team-photo-overlay"></div>
                         </div>
                         <h3 class="team-name">Ajith Mathew</h3>
@@ -1118,7 +1141,7 @@
                     <div>
                         <div class="team-photo-wrap">
                             <span class="team-floating-badge" style="background: rgba(255,255,255,0.18); border-color: #ffffff;">Technical Lead</span>
-                            <img src="images/team_aswin_asok.jpg" alt="Aswin Asok KV" class="team-photo-img">
+                            <img loading="lazy" src="images/team_aswin_asok.jpg" alt="Aswin Asok KV" class="team-photo-img">
                             <div class="team-photo-overlay"></div>
                         </div>
                         <h3 class="team-name">Aswin Asok KV</h3>
@@ -1245,7 +1268,7 @@
             <!-- Footer Columns -->
             <div class="footer-grid fm-stagger">
                 <div class="footer-col fm-reveal">
-                    <a href="#" class="brand-link" style="margin-bottom: 1.25rem; display: inline-block;">
+                    <a href="index.html" class="brand-link" style="position: static; display: inline-flex; margin-bottom: 1.25rem;">
                         <img src="images/bromatrix-logo.png" alt="BROMATRIX" class="footer-logo" />
                     </a>
                     <p style="font-size: 0.82rem; color: #71717a; line-height: 1.7; max-width: 320px;">
@@ -1257,6 +1280,7 @@
                     <h4>Organization</h4>
                     <ul class="footer-links">
                         <li><a href="about.html">About Bromatrix</a></li>
+                        <li><a href="#events">Our Events &amp; Cohorts</a></li>
                         <li><a href="#team">The Leadership Team</a></li>
                         <li><a href="#victories">AJEC Victory Record</a></li>
                         <li><a href="#trainings">Core Technical Pillars</a></li>
@@ -1382,11 +1406,11 @@
     </div>
 
     <!-- Three.js 3D Engine & GLTFLoader with Secure Origin Context -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Main JavaScript Module -->
-    <script src="js/main.js"></script>
+    <script defer src="js/main.js"></script>
 
     <!-- Holographic 3D Drone Experience - Desktop Only (Skipped on mobile to save 73MB & eliminate lag) -->
     <script>

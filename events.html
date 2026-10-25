@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Events &amp; Victories | Bromatrix</title>
+    <meta name="description" content="Explore Bromatrix's completed collegiate state championships, flagship student hardware engineering bootcamps, and official milestones.">
+
+    <!-- Security & Privacy Hardening Meta Tags -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Website Favicon & Brand Icon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <!-- Fonts (non-blocking async load) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
+
+    <!-- Font Awesome Icons (non-blocking async load) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
+
+    <!-- Base Modular Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- ThreeUI Component Styles & Events Reference Edition -->
+    <link rel="stylesheet" href="src/shaders/threeui.css">
+    <link rel="stylesheet" href="css/events.css">
+</head>
+<body class="events-page-wrapper">
+
+    <!-- ===================================================================
+         BACKGROUND: ThreeUI <PredictiveArcCanvas variant="ribbon-field" /> (Dark Theme)
+         =================================================================== -->
+    <div class="events-canvas-viewport">
+        <div class="shader-frame" style="position: absolute; inset: 0; width: 100%; height: 100%;">
+            <!-- Exact ThreeUI <PredictiveArcCanvas variant="ribbon-field" /> -->
+            <div class="threeui-background ribbon-field" id="predictive-arc-bg">
+                <canvas id="predictive-arc-canvas" style="opacity: 1; filter: hue-rotate(0deg) saturate(1) brightness(1);"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Atmospheric Vignette -->
+    <div class="events-ambient-vignette"></div>
+
+    <!-- ===================================================================
+         FLOATING CAPSULE NAVIGATION HEADER
+         =================================================================== -->
+    <header class="site-header" id="navbar">
+        <div class="header-container">
+            <!-- Brand Logo -->
+            <a href="index.html" class="brand-link" aria-label="Bromatrix Home">
+                <img src="images/bromatrix-logo.png" alt="Bromatrix" class="brand-logo" />
+            </a>
+
+            <!-- Floating Pill Capsule -->
+            <nav class="nav-capsule">
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="events.html" class="active" style="color: #ffffff; font-weight: 700;">Events</a>
+                <a href="index.html#team">The Team</a>
+                <a href="index.html#victories">Victories</a>
+                <a href="index.html#trainings">Pillars</a>
+                <a href="index.html#curriculum-timeline">10-Day Journey</a>
+                <a href="index.html#drone-lab">3D Drone Lab</a>
+            </nav>
+
+            <!-- Actions -->
+            <div class="header-actions">
+                <a href="index.html#contact-modal" class="btn-pill-get-started threeui-glassmorphism-cta" style="text-decoration: none;">
+                    <div class="shimmer-track"><div class="shimmer-rotator"><div class="shimmer-gradient"></div></div></div>
+                    <div class="glass-cut"></div>
+                    <div class="glass-content">
+                        <div class="glass-beam"></div>
+                        <div class="glass-backing"></div>
+                        <img src="images/advisor-headshot.jpg" alt="Advisor" class="glass-avatar">
+                        <span class="glass-text">Get started</span>
+                        <span class="glass-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>
+                        </span>
+                    </div>
+                </a>
+                <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Navigation -->
+        <div class="mobile-nav-drawer" id="mobile-menu">
+            <a href="index.html" class="mobile-link">Home</a>
+            <a href="about.html" class="mobile-link">About Bromatrix</a>
+            <a href="events.html" class="mobile-link" style="color: #ffffff; font-weight: 700;">Our Events</a>
+            <a href="index.html#team" class="mobile-link">The Leadership Team</a>
+            <a href="index.html#victories" class="mobile-link">AJEC Victory Showcase</a>
+            <a href="index.html#curriculum-timeline" class="mobile-link">10-Day Bootcamp Journey</a>
+            <a href="index.html#trainings" class="mobile-link">Core Technical Pillars</a>
+            <a href="index.html#drone-lab" class="mobile-link">Interactive 3D Drone Lab</a>
+            <a href="index.html" class="mobile-link" style="color: #ffffff; font-weight: 600;">Back to Main &rarr;</a>
+        </div>
+    </header>
+
+    <!-- ===================================================================
+         MAIN CONTENT: REFERENCE CARD UI (TRANSPARENT EFFECT & ANIMATIONS)
+         =================================================================== -->
+    <main class="events-main-content">
+        <!-- Section Header featuring ThreeUI <TextAnimationCollection variant="threeui-intro" /> -->
+        <section class="events-section-header">
+            <div class="events-pill-tag">
+                <span class="tag-dot"></span>
+                <span>Our Events &amp; Milestones</span>
+            </div>
+            
+            <!-- ThreeUI <TextAnimationCollection variant="threeui-intro" /> Wordmark Assembly -->
+            <div class="shader-frame events-intro-shader-frame">
+                <div class="neuform-isolated text-animation-collection" data-variant="threeui-intro" data-mode="dark">
+                    <iframe class="neuform-isolated__frame is-ready" src="src/shaders/neuform-isolated/sources/bromatrix-intro.html" title="Bromatrix chromatic wordmark intro" tabIndex="-1" aria-hidden="true" frameborder="0" allowtransparency="true" style="border: none; outline: none; background: transparent;"></iframe>
+                </div>
+            </div>
+
+            <p class="events-subtitle">
+                A showcase of our official collegiate state championships, summer internship inaugurations, and full-stack drone bootcamps.
+            </p>
+        </section>
+
+        <!-- Reference Cards Grid (Transparent Effect, Images & Liquid Metal Button) -->
+        <section class="events-reference-grid" id="events-reference-grid">
+            <!-- Dynamically populated by js/events.js -->
+        </section>
+    </main>
+
+    <!-- ===================================================================
+         EVENT DETAIL MODAL
+         =================================================================== -->
+    <div class="event-modal-backdrop" id="event-modal" aria-hidden="true" role="dialog">
+        <div class="event-modal-window">
+            <button class="event-modal-close" id="event-modal-close-btn" type="button" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="event-modal-media-banner">
+                <img id="modal-event-img" src="" alt="Event Banner">
+            </div>
+            <div class="event-modal-content">
+                <div class="event-modal-header">
+                    <span class="event-modal-tag-chip" id="modal-event-tag">Category</span>
+                    <h3 class="event-modal-title" id="modal-event-title">Event Title</h3>
+                </div>
+
+                <p class="event-modal-body-text" id="modal-event-desc">
+                    Event description.
+                </p>
+
+                <!-- Authentic Gallery -->
+                <div class="event-modal-gallery" id="modal-event-gallery">
+                    <!-- Populated dynamically -->
+                </div>
+
+                <div class="event-modal-footer">
+                    <div style="font-family: var(--font-mono); font-size: 0.78rem; color: #a1a1aa;">
+                        <i class="fa-solid fa-shield-halved" style="color: #60a5fa; margin-right: 6px;"></i> Verified Event &bull; Bromatrix Innovation Hub
+                    </div>
+                    <button class="btn-monochrome" onclick="closeEventModal()" type="button" style="padding: 0.75rem 1.85rem; font-size: 0.88rem;">
+                        Close Showcase &times;
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================
+         SITE FOOTER
+         =================================================================== -->
+    <footer class="site-footer events-footer">
+        <div class="container-max">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="brand-link" style="margin-bottom: 1.25rem; display: inline-flex; position: static;">
+                        <img src="images/bromatrix-logo.png" alt="BROMATRIX" class="footer-logo" />
+                    </a>
+                    <p style="font-size: 0.82rem; color: #71717a; line-height: 1.7; max-width: 320px;">
+                        A student-founded hardware startup from Vimal Jyothi Engineering College, Chemperi. Advancing STEM through UAV drones, embedded systems, IoT, and hands-on engineering education.
+                    </p>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Bromatrix</a></li>
+                        <li><a href="events.html">Our Events</a></li>
+                        <li><a href="index.html#team">The Leadership Team</a></li>
+                        <li><a href="index.html#victories">AJEC Victory Record</a></li>
+                        <li><a href="privacy.html">Privacy Policy &amp; Terms</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Interactive Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html#ai-assistant">AI STEM Advisor</a></li>
+                        <li><a href="index.html#architecture">Hardware Flow Blueprints</a></li>
+                        <li><a href="index.html#estimator">Scope Calculator</a></li>
+                        <li><a href="index.html#curriculum-timeline">10-Day Curriculum</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Connect</h4>
+                    <div style="display: flex; gap: 0.75rem; margin-bottom: 1.25rem;">
+                        <a href="https://www.linkedin.com/in/simon-joseph-538a7b357/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com/therealretro7" target="_blank" rel="noopener noreferrer" aria-label="GitHub" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-github"></i></a>
+                        <a href="https://wa.me/919496083505" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" style="width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: center; color: #ffffff;"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                    <div style="font-family: var(--font-mono); font-size: 0.72rem; color: #71717a;">
+                        Status: <span style="color: #ffffff;">Accepting Workshop Enquiries</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Bromatrix Innovation Hub. All rights reserved.</div>
+                <div style="display: flex; gap: 1.5rem;">
+                    <a href="privacy.html" style="color: #a1a1aa; text-decoration: none;">Privacy Policy</a>
+                    <a href="privacy.html#terms" style="color: #a1a1aa; text-decoration: none;">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JS for animations & interactive controls -->
+    <script src="js/main.js"></script>
+
+    <!-- ThreeUI Predictive Arc & Events Runtime Engine -->
+    <script src="js/predictive-arc.js"></script>
+    <script src="js/events.js"></script>
+</body>
+</html>

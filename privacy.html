@@ -10,13 +10,19 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
-    <!-- Fonts -->
+    <!-- Website Favicon & Brand Icon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png">
+
+    <!-- Fonts (non-blocking async load) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"></noscript>
 
-    <!-- Font Awesome Icons with Subresource Integrity -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Font Awesome Icons (non-blocking async load) -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></noscript>
 
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
@@ -43,9 +49,18 @@
 
             <!-- Actions -->
             <div class="header-actions">
-                <a href="index.html#ai-assistant" class="login-link">Portal</a>
-                <a href="index.html#contact-modal" onclick="openModal('training')" class="btn-pill-get-started" style="text-decoration: none;">
-                    Get started
+                <a href="index.html#contact-modal" onclick="openModal('training')" class="btn-pill-get-started threeui-glassmorphism-cta" style="text-decoration: none;">
+                    <div class="shimmer-track"><div class="shimmer-rotator"><div class="shimmer-gradient"></div></div></div>
+                    <div class="glass-cut"></div>
+                    <div class="glass-content">
+                        <div class="glass-beam"></div>
+                        <div class="glass-backing"></div>
+                        <img src="images/advisor-headshot.jpg" alt="Advisor" class="glass-avatar">
+                        <span class="glass-text">Get started</span>
+                        <span class="glass-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21.64 3.64-1.28-1.28a1.21 1.21 0 0 0-1.72 0L2.36 18.64a1.21 1.21 0 0 0 0 1.72l1.28 1.28a1.2 1.2 0 0 0 1.72 0L21.64 5.36a1.2 1.2 0 0 0 0-1.72"></path><path d="m14 7 3 3"></path><path d="M5 6v4"></path><path d="M19 14v4"></path><path d="M10 2v2"></path><path d="M7 8H3"></path><path d="M21 16h-4"></path><path d="M11 3H9"></path></svg>
+                        </span>
+                    </div>
                 </a>
                 <button class="mobile-toggle" id="mobile-menu-btn" aria-label="Toggle Menu">
                     <i class="fa-solid fa-bars"></i>
@@ -311,7 +326,7 @@
         <div class="container-max">
             <div class="footer-grid fm-stagger">
                 <div class="footer-col fm-reveal">
-                    <a href="index.html" class="brand-link" style="margin-bottom: 1.25rem; display: inline-block;">
+                    <a href="index.html" class="brand-link" style="position: static; display: inline-flex; margin-bottom: 1.25rem;">
                         <img src="images/bromatrix-logo.png" alt="BROMATRIX" class="footer-logo" />
                     </a>
                     <p style="font-size: 0.82rem; color: #71717a; line-height: 1.7; max-width: 320px;">

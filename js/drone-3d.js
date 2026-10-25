@@ -665,12 +665,16 @@
         window.addEventListener('pointercancel', handlePointerEnd);
 
         canvas.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            const zoomDelta = e.deltaY * 0.0035;
-            state.targetZoom += zoomDelta;
-            state.targetZoom = Math.max(state.zoomMin, Math.min(state.zoomMax, state.targetZoom));
-            state.lastInteractionTime = performance.now();
-            state.autoResumeWeight = 0;
+            // Zoom only when Alt key is held (Alt + Scroll)
+            if (e.altKey) {
+                e.preventDefault();
+                const zoomDelta = e.deltaY * 0.0035;
+                state.targetZoom += zoomDelta;
+                state.targetZoom = Math.max(state.zoomMin, Math.min(state.zoomMax, state.targetZoom));
+                state.lastInteractionTime = performance.now();
+                state.autoResumeWeight = 0;
+            }
+            // Without Alt, wheel scroll naturally scrolls the web page
         }, { passive: false });
 
         canvas.addEventListener('touchstart', (e) => {

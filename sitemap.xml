@@ -20,6 +20,14 @@
         <priority>0.8</priority>
     </url>
 
+    <!-- Events & Victories Page -->
+    <url>
+        <loc>https://bromatrix.com/events.html</loc>
+        <lastmod>2026-10-25</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- Privacy Policy & Terms Page -->
     <url>
         <loc>https://bromatrix.com/privacy.html</loc>

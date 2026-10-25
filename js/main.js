@@ -233,19 +233,52 @@ function initHeroScrollSequence() {
         return `Public/Images/Hero section/ezgif-frame-${num}.png`;
     }
 
-    // Preload all 120 frames
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-        const img = new Image();
-        img.src = getFrameSrc(i);
-        img.onload = () => {
-            imagesLoaded++;
-            if (i === 1) {
-                // Immediate render of first frame so user sees it right away
-                renderFrame(0);
-            }
-        };
-        frames.push(img);
+    // Initialize frames array with placeholders
+    for (let i = 0; i < TOTAL_FRAMES; i++) {
+        frames.push(null);
     }
+
+    // Load a specific frame on demand
+    function loadFrame(index, callback) {
+        if (frames[index] && frames[index].complete && frames[index].naturalWidth > 0) {
+            if (callback) callback();
+            return;
+        }
+        const img = new Image();
+        img.onload = () => {
+            frames[index] = img;
+            imagesLoaded++;
+            if (callback) callback();
+        };
+        img.onerror = () => {};
+        img.src = getFrameSrc(index + 1);
+        frames[index] = img;
+    }
+
+    // Preload a window of frames around the target index
+    function preloadWindow(centerIndex, windowSize) {
+        const start = Math.max(0, centerIndex - windowSize);
+        const end = Math.min(TOTAL_FRAMES - 1, centerIndex + windowSize);
+        for (let i = start; i <= end; i++) {
+            loadFrame(i);
+        }
+    }
+
+    // Load first frame immediately so the hero is visible at once
+    loadFrame(0, () => {
+        renderFrame(0);
+        resizeCanvas();
+        // After first frame, preload frames 0-20 for initial scroll range
+        setTimeout(() => preloadWindow(0, 20), 100);
+        // Then load all remaining frames in background after page is interactive
+        setTimeout(() => {
+            for (let i = 20; i < TOTAL_FRAMES; i++) {
+                (function(idx) {
+                    setTimeout(() => loadFrame(idx), idx * 8);
+                })(i);
+            }
+        }, 1500);
+    });
 
     // High-DPI canvas sizing
     function resizeCanvas() {
@@ -396,6 +429,7 @@ function initHeroScrollSequence() {
             if (currentProgress >= 0.985 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
 
             renderFrame(Math.round(currentFrame));
+            preloadWindow(Math.round(currentFrame), 8);
         }
 
         requestAnimationFrame(loop);

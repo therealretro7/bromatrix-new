@@ -238,9 +238,19 @@ body {
     text-decoration: none;
     color: var(--text-white);
     transition: opacity 0.2s ease;
+}
+.site-header .brand-link {
     position: absolute;
     left: 0;
     z-index: 2;
+}
+.site-footer .brand-link,
+.footer-col .brand-link {
+    position: static !important;
+    display: inline-flex !important;
+    align-items: center;
+    margin-bottom: 1.25rem !important;
+    left: auto !important;
 }
 .brand-link:hover { opacity: 0.85; }
 
@@ -268,12 +278,12 @@ body {
 
 /* Footer logo */
 .footer-logo {
-    height: 56px;
+    height: 38px;
     width: auto;
     filter: drop-shadow(0 0 8px rgba(255,255,255,0.12));
     transition: opacity 0.2s ease, filter 0.2s ease;
     display: block;
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.75rem;
 }
 .brand-link:hover .footer-logo {
     opacity: 0.85;
@@ -361,37 +371,185 @@ body {
 }
 .login-link:hover { color: #ffffff; }
 
+/* ==========================================================================
+   ThreeUI <RectangleButtons variant="glassmorphism-cta" /> Component
+   Source: https://threeui.com/source-code/glassmorphism-cta.json
+   ========================================================================== */
+.threeui-glassmorphism-cta,
 .btn-pill-get-started {
-    padding: 0.5rem 1.35rem;
-    border-radius: var(--radius-pill);
+    --spread: 90deg;
+    --shimmer-color: rgba(255, 255, 255, 0.65);
+    --radius: 9999px;
+    --speed: 4s;
+    --cut: 1px;
+    --bg: rgba(255, 255, 255, 0.05);
 
-    /* Matching liquid glass fill */
-    background: rgba(255, 255, 255, 0.13);
-    backdrop-filter: blur(24px) saturate(200%);
-    -webkit-backdrop-filter: blur(24px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.22);
-
-    color: var(--text-white);
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.25s ease;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    overflow: hidden;
     cursor: pointer;
-
-    box-shadow:
-        0 4px 16px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    text-decoration: none !important;
+    isolation: isolate;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: 0 8px 30px rgba(129, 140, 248, 0.22);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.btn-pill-get-started::before { display: none; }
-
+.threeui-glassmorphism-cta:hover,
 .btn-pill-get-started:hover {
-    background: rgba(255, 255, 255, 0.22);
-    border-color: rgba(255, 255, 255, 0.35);
+    transform: scale(1.05);
+    box-shadow: 0 0 35px 6px rgba(129, 140, 248, 0.35);
+}
+
+/* Revolving Highlight Conic Gradient Track */
+.threeui-glassmorphism-cta__revolving,
+.btn-pill-get-started .shimmer-track {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.threeui-glassmorphism-cta__revolving-inner,
+.btn-pill-get-started .shimmer-rotator {
+    position: absolute;
+    inset: -200%;
+    width: 400%;
+    height: 400%;
+    animation: threeui-rotate-gradient var(--speed) linear infinite;
+}
+
+.threeui-glassmorphism-cta__revolving-gradient,
+.btn-pill-get-started .shimmer-gradient {
+    position: absolute;
+    inset: 0;
+    background: conic-gradient(
+        from calc(270deg - (var(--spread) * 0.5)),
+        transparent 0,
+        var(--shimmer-color) var(--spread),
+        transparent var(--spread)
+    );
+}
+
+/* Cut layer with blur */
+.threeui-glassmorphism-cta__cut,
+.btn-pill-get-started .glass-cut {
+    position: absolute;
+    inset: var(--cut);
+    border-radius: inherit;
+    background: var(--bg);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    pointer-events: none;
+}
+
+/* Inner shell with rotating border beam and content */
+.threeui-glassmorphism-cta__content,
+.btn-pill-get-started .glass-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.42rem 0.95rem 0.42rem 0.6rem;
+    border-radius: inherit;
+    overflow: hidden;
     color: #ffffff;
-    box-shadow:
-        0 6px 24px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    font-family: inherit;
+    font-size: 0.84rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* Revolving Border Beam */
+.threeui-glassmorphism-cta__beam,
+.btn-pill-get-started .glass-beam {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: threeui-borderBeamRotation 4s infinite linear;
+    pointer-events: none;
+}
+
+/* Inner Glass Backing */
+.threeui-glassmorphism-cta__glass,
+.btn-pill-get-started .glass-backing {
+    position: absolute;
+    inset: 1px;
+    background: rgba(10, 11, 20, 0.82);
+    border-radius: inherit;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Advisor Avatar / Portrait */
+.threeui-glassmorphism-cta__avatar,
+.btn-pill-get-started .glass-avatar {
+    position: relative;
+    z-index: 10;
+    width: 22px;
+    height: 22px;
+    border-radius: 9999px;
+    object-fit: cover;
+    box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.18);
+    display: block;
+}
+
+/* Text */
+.threeui-glassmorphism-cta__text,
+.btn-pill-get-started .glass-text {
+    position: relative;
+    z-index: 10;
+    color: #ffffff;
+    font-size: 0.84rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+}
+
+/* Glowing Generative-Action Icon badge */
+.threeui-glassmorphism-cta__icon,
+.btn-pill-get-started .glass-icon {
+    position: relative;
+    z-index: 10;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.12);
+    margin-left: 2px;
+    color: #ffffff;
+}
+
+@keyframes threeui-rotate-gradient {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes threeui-borderBeamRotation {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .mobile-toggle {
@@ -1202,9 +1360,7 @@ body.theme-cosmic #cursor-dot {
 }
 
 #navbar.cosmic-mode .btn-pill-get-started {
-    background: rgba(255, 255, 255, 0.10);
     color: #ffffff;
-    box-shadow: none;
 }
 
 /* Dark section  pure dark, no purple gradients */
@@ -3614,7 +3770,7 @@ body.theme-cosmic #cursor-dot {
     .hero-stage-desc { font-size: 0.82rem; line-height: 1.5; }
     .hero-stage-counter { bottom: 1rem; right: 1rem; }
     .login-link { display: none; }
-    .btn-pill-get-started { padding: 0.42rem 0.9rem; font-size: 0.78rem; }
+    .btn-pill-get-started .glass-content { padding: 0.35rem 0.75rem 0.35rem 0.5rem; font-size: 0.78rem; }
     .calc-btn-group { grid-template-columns: 1fr; gap: 0.5rem; }
 }
 
