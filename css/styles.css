@@ -3929,7 +3929,7 @@ body.theme-cosmic #cursor-dot {
         width: 34px !important;
         height: 34px !important;
     }
-    .hero-scroll-container { height: 350vh !important; }
+    .hero-scroll-container { height: 380vh !important; }
     .hero-headline { font-size: clamp(1.65rem, 8vw, 2.1rem) !important; }
     .hero-subheadline { font-size: 0.82rem !important; line-height: 1.5 !important; }
     .hero-badge { font-size: 0.58rem !important; padding: 0.3rem 0.65rem !important; }
