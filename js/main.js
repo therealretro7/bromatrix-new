@@ -322,8 +322,8 @@ function initHeroScrollSequence() {
 
     // Load first frame immediately so the hero is visible at once
     loadFrame(0, () => {
-        renderFrame(0);
-        resizeCanvas();
+        resizeCanvas();   // Size canvas FIRST so DPR transform is ready
+        renderFrame(0);   // Then render into a properly-sized canvas
         // After first frame, preload frames 0-25 for initial scroll range
         setTimeout(() => preloadWindow(0, 25), 50);
         // Then load all remaining frames in background
@@ -387,11 +387,11 @@ function initHeroScrollSequence() {
         ctx.drawImage(img, drawX, drawY, drawW, drawH);
     }
 
-    // Story Stages Configuration with continuous coverage (no blank gaps)
+    // Story Stages Configuration — wider spans eliminate opacity gaps between stages
     const stages = [
-        { el: document.getElementById('hero-stage-1'), center: 0.08, span: 0.16 },
-        { el: document.getElementById('hero-stage-2'), center: 0.32, span: 0.18 },
-        { el: document.getElementById('hero-stage-3'), center: 0.58, span: 0.18 },
+        { el: document.getElementById('hero-stage-1'), center: 0.08, span: 0.18 },
+        { el: document.getElementById('hero-stage-2'), center: 0.33, span: 0.25 },
+        { el: document.getElementById('hero-stage-3'), center: 0.57, span: 0.25 },
         { el: document.getElementById('hero-stage-4'), center: 0.84, span: 0.18 }
     ];
 
@@ -422,6 +422,9 @@ function initHeroScrollSequence() {
             targetFrame = TOTAL_FRAMES - 1;
             currentFrame = TOTAL_FRAMES - 1;
             renderFrame(TOTAL_FRAMES - 1);
+        } else {
+            // Always render the best available frame immediately on scroll (no waiting for lerp)
+            renderFrame(Math.round(targetFrame));
         }
 
         // Proactively preload surrounding frames on scroll
@@ -443,17 +446,18 @@ function initHeroScrollSequence() {
             let translateY = 0;
 
             if (idx === 0) {
-                // First stage: 100% visible from initial load (progress = 0) up to 0.15, then fades out smoothly
-                if (progress <= 0.15) {
+                // First stage: full opacity from 0 → 0.18, then cosine fade-out until 0.34
+                // Overlaps stage 2 so there's never a visibility gap
+                if (progress <= 0.18) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress <= 0.28) {
-                    const t = (progress - 0.15) / (0.28 - 0.15);
+                } else if (progress <= 0.34) {
+                    const t = (progress - 0.18) / (0.34 - 0.18);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = -30 * t;
                 }
             } else if (idx === stages.length - 1) {
-                // Last stage: fades in at 0.68, peaks at ~0.78-0.94, and stays 100% visible and completely revealed
+                // Last stage: fades in at 0.62, peaks at 0.76-0.94, then fades cleanly
                 if (progress >= 0.76 && progress <= 0.94) {
                     opacity = 1;
                     translateY = 0;
@@ -461,8 +465,8 @@ function initHeroScrollSequence() {
                     const t = (progress - 0.94) / (0.99 - 0.94);
                     opacity = Math.max(0, 0.5 * (1 + Math.cos(Math.min(t, 1) * Math.PI)));
                     translateY = -25 * Math.min(t, 1);
-                } else if (progress >= 0.64) {
-                    const t = (0.76 - progress) / (0.76 - 0.64);
+                } else if (progress >= 0.62) {
+                    const t = (0.76 - progress) / (0.76 - 0.62);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = 25 * t;
                 }
