@@ -192,9 +192,10 @@ function initFramerMotionAnimations() {
         return;
     }
 
+    const isMobile = window.innerWidth <= 768;
     const observerOptions = {
         root: null,
-        rootMargin: '50px 0px 50px 0px',
+        rootMargin: isMobile ? '200px 0px 200px 0px' : '60px 0px 60px 0px',
         threshold: 0.01
     };
 
@@ -209,13 +210,13 @@ function initFramerMotionAnimations() {
 
     animatedElements.forEach(el => observer.observe(el));
 
-    // Fallback scroll listener for mobile to guarantee 100% complete reveals
+    // Fallback scroll listener for mobile to guarantee 100% complete reveals while moving to another section
     function checkVisibility() {
-        const triggerBottom = window.innerHeight + 50;
+        const triggerBottom = window.innerHeight + 150;
         animatedElements.forEach(el => {
             if (!el.classList.contains('is-inview')) {
                 const rect = el.getBoundingClientRect();
-                if (rect.top < triggerBottom && rect.bottom > -50) {
+                if (rect.top < triggerBottom && rect.bottom > -100) {
                     revealElement(el);
                     try { observer.unobserve(el); } catch (e) {}
                 }
@@ -224,13 +225,31 @@ function initFramerMotionAnimations() {
     }
 
     window.addEventListener('scroll', checkVisibility, { passive: true });
-    // Run initial check after layout settles
+    // Run initial checks immediately and after layout settles
+    checkVisibility();
     setTimeout(checkVisibility, 150);
+    setTimeout(checkVisibility, 600);
 
     // Stagger children within any .fm-stagger container
     document.querySelectorAll('.fm-stagger').forEach(container => {
         Array.from(container.children).forEach((child, index) => {
-            child.style.transitionDelay = `${(index * 0.06) + 0.04}s`;
+            child.style.transitionDelay = `${(index * 0.05) + 0.03}s`;
+        });
+    });
+
+    // When moving to another section via in-page navigation links, complete all animations in target section
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', () => {
+            const hash = link.getAttribute('href');
+            if (hash && hash !== '#') {
+                setTimeout(() => {
+                    const target = document.querySelector(hash);
+                    if (target) {
+                        target.querySelectorAll('.fm-reveal, .fm-scale, .fm-mask-inner').forEach(revealElement);
+                    }
+                    checkVisibility();
+                }, 50);
+            }
         });
     });
 }
@@ -385,16 +404,24 @@ function initHeroScrollSequence() {
         const progress = Math.min(Math.max(rawProgress, 0), 1);
         currentProgress = progress;
 
-        // Frame target (0 to 119) with dedicated complete-reveal showcase cushion
-        // 0.00 to 0.80: scrubs frames 0 to 119 in sync with scroll
-        // 0.80 to 0.95: HOLDS the 100% completely deconstructed/exploded frame fully revealed
-        // 0.95 to 1.00: clean exit transition to next section
+        const isMobile = window.innerWidth <= 768;
+        // On mobile, complete the 120-frame scrubbing by 0.70 so the exploded view is 100% revealed
+        // and fully enjoyed well before the user transitions into the next section
+        const completeThreshold = isMobile ? 0.70 : 0.80;
+
         if (progress <= 0.005) {
             targetFrame = 0;
-        } else if (progress >= 0.80) {
+        } else if (progress >= completeThreshold) {
             targetFrame = TOTAL_FRAMES - 1; // Frame 119: 100% completely revealed
         } else {
-            targetFrame = (progress / 0.80) * (TOTAL_FRAMES - 1);
+            targetFrame = (progress / completeThreshold) * (TOTAL_FRAMES - 1);
+        }
+
+        // When moving to or past the transition zone to another section, immediately snap to 100% completion
+        if (rawProgress >= (isMobile ? 0.72 : 0.85)) {
+            targetFrame = TOTAL_FRAMES - 1;
+            currentFrame = TOTAL_FRAMES - 1;
+            renderFrame(TOTAL_FRAMES - 1);
         }
 
         // Proactively preload surrounding frames on scroll
@@ -480,8 +507,9 @@ function initHeroScrollSequence() {
             currentFrame += diff * lerpFactor;
 
             // Guarantee clean arrival at endpoints
+            const finishThreshold = isMobile ? 0.70 : 0.80;
             if (currentProgress <= 0.005 && currentFrame < 0.5) currentFrame = 0;
-            if (currentProgress >= 0.80 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
+            if (currentProgress >= finishThreshold && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
 
             renderFrame(Math.round(currentFrame));
             preloadWindow(Math.round(currentFrame), 12);
