@@ -587,6 +587,55 @@
     }
 }
 
+/* ===================================================================
+   MOBILE LAYOUT — EVENTS PAGE
+   =================================================================== */
+
+/* Events main content top padding (below fixed header) */
+@media (max-width: 768px) {
+    .events-main-content { padding-top: 5rem; padding-bottom: 2.5rem; }
+
+    /* Header */
+    .events-section-header { margin-bottom: 2rem; }
+    .events-pill-tag { font-size: 0.68rem; padding: 0.35rem 0.9rem; }
+    .events-title { font-size: clamp(1.9rem, 6.5vw, 2.8rem); }
+    .events-subtitle { font-size: 0.92rem; padding: 0 1rem; }
+
+    /* Cards — reduce from 520px min-height */
+    .events-reference-grid { padding: 0 1rem; gap: 1.25rem; }
+    .ref-event-card { min-height: 380px; padding: 1.25rem; border-radius: 20px; }
+    .ref-event-card:hover { transform: translateY(-4px) scale(1.01); }
+
+    .ref-card-title { font-size: clamp(1.15rem, 4vw, 1.45rem); }
+    .ref-card-desc { font-size: 0.82rem; }
+    .ref-card-orb-host { width: 46px; height: 46px; }
+
+    /* Event modal */
+    .event-modal-backdrop { padding: 0.75rem; align-items: flex-end; }
+    .event-modal-window {
+        border-radius: 24px 24px 0 0;
+        max-height: 94vh;
+        max-width: 100%;
+    }
+    .event-modal-media-banner { height: 220px; }
+    .event-modal-content { padding: 1.5rem 1.25rem 1.75rem; }
+    .event-modal-title { font-size: clamp(1.45rem, 5vw, 1.85rem); }
+    .event-modal-gallery { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+    .event-modal-gallery img { height: 90px; }
+    .event-modal-footer { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+    .event-modal-footer > * { width: 100%; justify-content: center; }
+
+    /* Footer */
+    .events-footer { padding: 2.5rem 1rem 2rem !important; }
+}
+
+@media (max-width: 480px) {
+    .ref-event-card { min-height: 320px; padding: 1rem; border-radius: 18px; }
+    .events-reference-grid { padding: 0 0.75rem; gap: 1rem; }
+    .event-modal-gallery { grid-template-columns: 1fr; }
+    .event-modal-gallery img { height: 120px; }
+}
+
 .events-footer .footer-col {
     opacity: 1 !important;
     transform: none !important;

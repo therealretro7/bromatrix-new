@@ -1181,19 +1181,58 @@ function initModalHandlers() {
    =================================================================== */
 function initMobileNav() {
     const toggleBtn = document.getElementById('mobile-menu-btn');
-    const drawer = document.getElementById('mobile-menu');
-
+    const drawer   = document.getElementById('mobile-menu');
     if (!toggleBtn || !drawer) return;
 
-    toggleBtn.addEventListener('click', () => {
-        const isOpen = drawer.style.display === 'flex';
-        drawer.style.display = isOpen ? 'none' : 'flex';
+    const hamburgerSvg = toggleBtn.querySelector('.hamburger-icon');
+    const closeSvg     = toggleBtn.querySelector('.close-icon');
+    const faIcon       = toggleBtn.querySelector('i');
+
+    function openDrawer() {
+        drawer.classList.add('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+        if (hamburgerSvg && closeSvg) {
+            hamburgerSvg.style.display = 'none';
+            closeSvg.style.display = 'block';
+        }
+        if (faIcon) { faIcon.classList.remove('fa-bars'); faIcon.classList.add('fa-xmark'); }
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        drawer.classList.remove('is-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        if (hamburgerSvg && closeSvg) {
+            hamburgerSvg.style.display = 'block';
+            closeSvg.style.display = 'none';
+        }
+        if (faIcon) { faIcon.classList.remove('fa-xmark'); faIcon.classList.add('fa-bars'); }
+        document.body.style.overflow = '';
+    }
+
+    toggleBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        drawer.classList.contains('is-open') ? closeDrawer() : openDrawer();
     });
 
-    document.querySelectorAll('.mobile-link').forEach(link => {
-        link.addEventListener('click', () => {
-            drawer.style.display = 'none';
-        });
+    // Close when tapping any link inside drawer
+    drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', closeDrawer);
+    });
+
+    // Close button inside drawer if present
+    const closeBtn = drawer.querySelector('.mobile-drawer-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+
+    // Close when clicking outside drawer
+    document.addEventListener('click', (e) => {
+        if (drawer.classList.contains('is-open') && !drawer.contains(e.target) && !toggleBtn.contains(e.target)) {
+            closeDrawer();
+        }
+    });
+
+    // Close when screen grows past tablet breakpoint
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) closeDrawer();
     });
 }
 
