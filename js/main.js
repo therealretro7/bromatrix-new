@@ -31,7 +31,7 @@ function initCountUpAnimation() {
         const target   = parseInt(el.dataset.count, 10);
         const suffix   = el.dataset.suffix || '';
         const pad      = parseInt(el.dataset.pad || '0', 10);
-        const duration = 1800; // ms
+        const duration = window.innerWidth <= 768 ? 1000 : 1600; // Snappy completion on mobile
         const start    = performance.now();
 
         function tick(now) {
@@ -60,7 +60,7 @@ function initCountUpAnimation() {
                 observer.unobserve(entry.target); // run once
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.15 });
 
     counters.forEach(el => observer.observe(el));
 }
@@ -78,6 +78,14 @@ function initTypewriterEffect() {
     const line1El   = el.querySelector('.typewriter-line-1');
     const line2El   = el.querySelector('.typewriter-line-2');
     const cursor    = el.querySelector('.typewriter-cursor');
+
+    // On mobile screens, display text fully without delayed wipe-out
+    if (window.innerWidth <= 768) {
+        if (line1El && line1Text) line1El.textContent = line1Text;
+        if (line2El && line2Text) line2El.textContent = line2Text;
+        if (cursor) cursor.classList.add('hidden');
+        return;
+    }
 
     let hasPlayed = false;
 
@@ -98,17 +106,17 @@ function initTypewriterEffect() {
         line2El.textContent = '';
         if (cursor) cursor.classList.remove('hidden');
 
-        // Type line 1 at 45ms/char
-        typeText(line1El, line1Text, 45, () => {
-            // Pause 400ms then type line 2 at 28ms/char
+        // Type line 1 at 35ms/char
+        typeText(line1El, line1Text, 35, () => {
+            // Pause 300ms then type line 2 at 22ms/char
             setTimeout(() => {
-                typeText(line2El, line2Text, 28, () => {
-                    // Hide cursor after 2s when done
+                typeText(line2El, line2Text, 22, () => {
+                    // Hide cursor after 1.5s when done
                     setTimeout(() => {
                         if (cursor) cursor.classList.add('hidden');
-                    }, 2000);
+                    }, 1500);
                 });
-            }, 400);
+            }, 300);
         });
     }
 
@@ -362,10 +370,10 @@ function initHeroScrollSequence() {
 
     // Story Stages Configuration with continuous coverage (no blank gaps)
     const stages = [
-        { el: document.getElementById('hero-stage-1'), center: 0.10, span: 0.18 },
-        { el: document.getElementById('hero-stage-2'), center: 0.38, span: 0.20 },
-        { el: document.getElementById('hero-stage-3'), center: 0.65, span: 0.20 },
-        { el: document.getElementById('hero-stage-4'), center: 0.88, span: 0.20 }
+        { el: document.getElementById('hero-stage-1'), center: 0.08, span: 0.16 },
+        { el: document.getElementById('hero-stage-2'), center: 0.32, span: 0.18 },
+        { el: document.getElementById('hero-stage-3'), center: 0.58, span: 0.18 },
+        { el: document.getElementById('hero-stage-4'), center: 0.84, span: 0.18 }
     ];
 
     function updateScrollProgress() {
@@ -377,13 +385,16 @@ function initHeroScrollSequence() {
         const progress = Math.min(Math.max(rawProgress, 0), 1);
         currentProgress = progress;
 
-        // Frame target (0 to 119)
-        if (progress >= 0.985) {
-            targetFrame = TOTAL_FRAMES - 1;
-        } else if (progress <= 0.005) {
+        // Frame target (0 to 119) with dedicated complete-reveal showcase cushion
+        // 0.00 to 0.80: scrubs frames 0 to 119 in sync with scroll
+        // 0.80 to 0.95: HOLDS the 100% completely deconstructed/exploded frame fully revealed
+        // 0.95 to 1.00: clean exit transition to next section
+        if (progress <= 0.005) {
             targetFrame = 0;
+        } else if (progress >= 0.80) {
+            targetFrame = TOTAL_FRAMES - 1; // Frame 119: 100% completely revealed
         } else {
-            targetFrame = progress * (TOTAL_FRAMES - 1);
+            targetFrame = (progress / 0.80) * (TOTAL_FRAMES - 1);
         }
 
         // Proactively preload surrounding frames on scroll
@@ -409,22 +420,22 @@ function initHeroScrollSequence() {
                 if (progress <= 0.15) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress <= 0.30) {
-                    const t = (progress - 0.15) / (0.30 - 0.15);
+                } else if (progress <= 0.28) {
+                    const t = (progress - 0.15) / (0.28 - 0.15);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = -30 * t;
                 }
             } else if (idx === stages.length - 1) {
-                // Last stage: fades in smoothly around 0.65, peaks at ~0.76-0.92, then fades out cleanly before manifesto appears
-                if (progress >= 0.74 && progress <= 0.92) {
+                // Last stage: fades in at 0.68, peaks at ~0.78-0.94, and stays 100% visible and completely revealed
+                if (progress >= 0.76 && progress <= 0.94) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress > 0.92) {
-                    const t = (progress - 0.92) / (0.99 - 0.92);
+                } else if (progress > 0.94) {
+                    const t = (progress - 0.94) / (0.99 - 0.94);
                     opacity = Math.max(0, 0.5 * (1 + Math.cos(Math.min(t, 1) * Math.PI)));
                     translateY = -25 * Math.min(t, 1);
-                } else if (progress >= 0.56) {
-                    const t = (0.74 - progress) / (0.74 - 0.56);
+                } else if (progress >= 0.64) {
+                    const t = (0.76 - progress) / (0.76 - 0.64);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = 25 * t;
                 }
@@ -453,7 +464,7 @@ function initHeroScrollSequence() {
             stageCounter.innerText = String(activeStageIndex + 1).padStart(2, '0');
             const counterContainer = stageCounter.closest('.hero-stage-counter');
             if (counterContainer) {
-                const counterOpacity = progress > 0.92 ? Math.max(0, (1 - progress) / 0.08) : 1;
+                const counterOpacity = progress > 0.94 ? Math.max(0, (1 - progress) / 0.06) : 1;
                 counterContainer.style.opacity = counterOpacity.toFixed(2);
             }
         }
@@ -463,13 +474,14 @@ function initHeroScrollSequence() {
     function loop() {
         const diff = targetFrame - currentFrame;
         if (Math.abs(diff) > 0.005) {
-            // Adaptive lerp: snappy when scrolling fast, smooth when settling
-            const lerpFactor = Math.abs(diff) > 6 ? 0.38 : 0.25;
+            const isMobile = window.innerWidth <= 768;
+            // On mobile, use responsive lerp factor so animation tracks finger and finishes completely
+            const lerpFactor = isMobile ? 0.65 : (Math.abs(diff) > 6 ? 0.38 : 0.25);
             currentFrame += diff * lerpFactor;
 
             // Guarantee clean arrival at endpoints
             if (currentProgress <= 0.005 && currentFrame < 0.5) currentFrame = 0;
-            if (currentProgress >= 0.985 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
+            if (currentProgress >= 0.80 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
 
             renderFrame(Math.round(currentFrame));
             preloadWindow(Math.round(currentFrame), 12);
@@ -478,16 +490,11 @@ function initHeroScrollSequence() {
         requestAnimationFrame(loop);
     }
 
-    window.addEventListener('resize', resizeCanvas);
-    window.addEventListener('scroll', () => {
-        if (!isTicking) {
-            requestAnimationFrame(() => {
-                updateScrollProgress();
-                isTicking = false;
-            });
-            isTicking = true;
-        }
-    }, { passive: true });
+    window.addEventListener('resize', () => {
+        resizeCanvas();
+        updateScrollProgress();
+    });
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
 
     resizeCanvas();
     updateScrollProgress();

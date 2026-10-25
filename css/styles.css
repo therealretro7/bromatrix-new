@@ -3664,7 +3664,7 @@ body.theme-cosmic #cursor-dot {
 
     /* ---- Hero Scroll Section ---- */
     .hero-scroll-container {
-        height: 380vh !important;
+        height: 420vh !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
     }
