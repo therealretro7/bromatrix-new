@@ -3632,11 +3632,30 @@ body.theme-cosmic #cursor-dot {
         margin-left: auto !important;
         flex-shrink: 0 !important;
     }
-    .btn-pill-get-started { display: none !important; }
+    /* "Get started" button in mobile header */
+    .btn-pill-get-started {
+        display: inline-flex !important;
+        vertical-align: middle !important;
+    }
+    .btn-pill-get-started .glass-avatar {
+        display: none !important;
+    }
+    .btn-pill-get-started .glass-content {
+        padding: 0.35rem 0.75rem !important;
+        font-size: 0.75rem !important;
+        gap: 0.35rem !important;
+    }
+    .btn-pill-get-started .glass-text {
+        font-size: 0.75rem !important;
+    }
+    .btn-pill-get-started .glass-icon {
+        width: 16px !important;
+        height: 16px !important;
+    }
     .mobile-toggle {
         display: inline-flex !important;
-        width: 40px !important;
-        height: 40px !important;
+        width: 36px !important;
+        height: 36px !important;
     }
 
     /* REMOVE 3D DRONE FOR MOBILE (Eliminates 73MB download and performance lag) */
@@ -3645,7 +3664,7 @@ body.theme-cosmic #cursor-dot {
 
     /* ---- Hero Scroll Section ---- */
     .hero-scroll-container {
-        height: 320vh !important;
+        height: 380vh !important;
         max-width: 100vw !important;
         overflow-x: hidden !important;
     }
@@ -3665,6 +3684,33 @@ body.theme-cosmic #cursor-dot {
         gap: 0.85rem !important;
         padding: 0 0.5rem !important;
         box-sizing: border-box !important;
+    }
+
+    /* ---- Scroll Reveal Animations (Complete & Responsive on Mobile) ---- */
+    .fm-reveal {
+        transform: translateY(20px) !important;
+        transition: opacity 0.55s var(--ease-apple), transform 0.55s var(--ease-apple) !important;
+        will-change: opacity, transform;
+    }
+    .fm-reveal.is-inview {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+    }
+    .fm-scale {
+        transform: scale(0.97) translateY(12px) !important;
+        transition: opacity 0.55s var(--ease-apple), transform 0.55s var(--ease-apple) !important;
+    }
+    .fm-scale.is-inview {
+        transform: scale(1) translateY(0) !important;
+        opacity: 1 !important;
+    }
+    .fm-mask-inner {
+        transform: translateY(60%) !important;
+        transition: transform 0.7s var(--ease-apple), opacity 0.6s ease !important;
+    }
+    .fm-mask-inner.is-inview {
+        transform: translateY(0) !important;
+        opacity: 1 !important;
     }
 
     .hero-badge {
@@ -3867,7 +3913,23 @@ body.theme-cosmic #cursor-dot {
 @media (max-width: 480px) {
     .site-header { padding: 0.65rem 0.85rem !important; }
     .brand-logo { height: 26px !important; }
-    .hero-scroll-container { height: 300vh !important; }
+    .btn-pill-get-started .glass-content {
+        padding: 0.3rem 0.65rem !important;
+        font-size: 0.72rem !important;
+        gap: 0.3rem !important;
+    }
+    .btn-pill-get-started .glass-text {
+        font-size: 0.72rem !important;
+    }
+    .btn-pill-get-started .glass-icon {
+        width: 14px !important;
+        height: 14px !important;
+    }
+    .mobile-toggle {
+        width: 34px !important;
+        height: 34px !important;
+    }
+    .hero-scroll-container { height: 350vh !important; }
     .hero-headline { font-size: clamp(1.65rem, 8vw, 2.1rem) !important; }
     .hero-subheadline { font-size: 0.82rem !important; line-height: 1.5 !important; }
     .hero-badge { font-size: 0.58rem !important; padding: 0.3rem 0.65rem !important; }

@@ -175,23 +175,25 @@ function initNavGlassMouseEffect() {
 function initFramerMotionAnimations() {
     const animatedElements = document.querySelectorAll('.fm-reveal, .fm-scale, .fm-mask-inner');
 
+    function revealElement(el) {
+        el.classList.add('is-inview');
+    }
+
     if (!('IntersectionObserver' in window)) {
-        // Fallback for older browsers
-        animatedElements.forEach(el => el.classList.add('is-inview'));
+        animatedElements.forEach(revealElement);
         return;
     }
 
     const observerOptions = {
         root: null,
-        rootMargin: '0px 0px 50px 0px',
+        rootMargin: '50px 0px 50px 0px',
         threshold: 0.01
     };
 
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-inview');
-                // Once animated, keep in view like Apple product pages
+                revealElement(entry.target);
                 obs.unobserve(entry.target);
             }
         });
@@ -199,10 +201,28 @@ function initFramerMotionAnimations() {
 
     animatedElements.forEach(el => observer.observe(el));
 
+    // Fallback scroll listener for mobile to guarantee 100% complete reveals
+    function checkVisibility() {
+        const triggerBottom = window.innerHeight + 50;
+        animatedElements.forEach(el => {
+            if (!el.classList.contains('is-inview')) {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < triggerBottom && rect.bottom > -50) {
+                    revealElement(el);
+                    try { observer.unobserve(el); } catch (e) {}
+                }
+            }
+        });
+    }
+
+    window.addEventListener('scroll', checkVisibility, { passive: true });
+    // Run initial check after layout settles
+    setTimeout(checkVisibility, 150);
+
     // Stagger children within any .fm-stagger container
     document.querySelectorAll('.fm-stagger').forEach(container => {
         Array.from(container.children).forEach((child, index) => {
-            child.style.transitionDelay = `${(index * 0.08) + 0.05}s`;
+            child.style.transitionDelay = `${(index * 0.06) + 0.04}s`;
         });
     });
 }
@@ -240,14 +260,23 @@ function initHeroScrollSequence() {
 
     // Load a specific frame on demand
     function loadFrame(index, callback) {
+        if (index < 0 || index >= TOTAL_FRAMES) return;
         if (frames[index] && frames[index].complete && frames[index].naturalWidth > 0) {
             if (callback) callback();
+            return;
+        }
+        if (frames[index] && frames[index].src) {
+            // Already requested
             return;
         }
         const img = new Image();
         img.onload = () => {
             frames[index] = img;
             imagesLoaded++;
+            // If the user's scroll position currently needs this frame or neighbor, render it immediately!
+            if (Math.abs(Math.round(currentFrame) - index) <= 1) {
+                renderFrame(Math.round(currentFrame));
+            }
             if (callback) callback();
         };
         img.onerror = () => {};
@@ -268,16 +297,16 @@ function initHeroScrollSequence() {
     loadFrame(0, () => {
         renderFrame(0);
         resizeCanvas();
-        // After first frame, preload frames 0-20 for initial scroll range
-        setTimeout(() => preloadWindow(0, 20), 100);
-        // Then load all remaining frames in background after page is interactive
+        // After first frame, preload frames 0-25 for initial scroll range
+        setTimeout(() => preloadWindow(0, 25), 50);
+        // Then load all remaining frames in background
         setTimeout(() => {
-            for (let i = 20; i < TOTAL_FRAMES; i++) {
+            for (let i = 25; i < TOTAL_FRAMES; i++) {
                 (function(idx) {
-                    setTimeout(() => loadFrame(idx), idx * 8);
+                    setTimeout(() => loadFrame(idx), idx * 6);
                 })(i);
             }
-        }, 1500);
+        }, 600);
     });
 
     // High-DPI canvas sizing
@@ -298,8 +327,20 @@ function initHeroScrollSequence() {
 
     // Aspect-ratio cover/contain rendering centered on canvas
     function renderFrame(frameIndex) {
-        const img = frames[frameIndex];
-        if (!img || !img.complete || img.naturalWidth === 0) return;
+        frameIndex = Math.max(0, Math.min(TOTAL_FRAMES - 1, Math.round(frameIndex)));
+        let img = frames[frameIndex];
+
+        // If target frame isn't loaded yet, find closest loaded frame as seamless fallback
+        if (!img || !img.complete || img.naturalWidth === 0) {
+            loadFrame(frameIndex);
+            for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
+                const prev = frames[frameIndex - offset];
+                if (prev && prev.complete && prev.naturalWidth > 0) { img = prev; break; }
+                const next = frames[frameIndex + offset];
+                if (next && next.complete && next.naturalWidth > 0) { img = next; break; }
+            }
+            if (!img || !img.complete || img.naturalWidth === 0) return;
+        }
 
         const w = window.innerWidth;
         const h = window.innerHeight;
@@ -321,10 +362,10 @@ function initHeroScrollSequence() {
 
     // Story Stages Configuration with continuous coverage (no blank gaps)
     const stages = [
-        { el: document.getElementById('hero-stage-1'), center: 0.10, span: 0.16 },
-        { el: document.getElementById('hero-stage-2'), center: 0.36, span: 0.18 },
-        { el: document.getElementById('hero-stage-3'), center: 0.64, span: 0.18 },
-        { el: document.getElementById('hero-stage-4'), center: 0.88, span: 0.18 }
+        { el: document.getElementById('hero-stage-1'), center: 0.10, span: 0.18 },
+        { el: document.getElementById('hero-stage-2'), center: 0.38, span: 0.20 },
+        { el: document.getElementById('hero-stage-3'), center: 0.65, span: 0.20 },
+        { el: document.getElementById('hero-stage-4'), center: 0.88, span: 0.20 }
     ];
 
     function updateScrollProgress() {
@@ -337,13 +378,16 @@ function initHeroScrollSequence() {
         currentProgress = progress;
 
         // Frame target (0 to 119)
-        if (progress >= 0.99) {
+        if (progress >= 0.985) {
             targetFrame = TOTAL_FRAMES - 1;
         } else if (progress <= 0.005) {
             targetFrame = 0;
         } else {
             targetFrame = progress * (TOTAL_FRAMES - 1);
         }
+
+        // Proactively preload surrounding frames on scroll
+        preloadWindow(Math.round(targetFrame), 16);
 
         // Progress bar width
         if (progressBar) {
@@ -361,26 +405,26 @@ function initHeroScrollSequence() {
             let translateY = 0;
 
             if (idx === 0) {
-                // First stage: 100% visible from initial load (progress = 0) up to 0.14, then fades out smoothly
-                if (progress <= 0.14) {
+                // First stage: 100% visible from initial load (progress = 0) up to 0.15, then fades out smoothly
+                if (progress <= 0.15) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress <= 0.28) {
-                    const t = (progress - 0.14) / (0.28 - 0.14);
+                } else if (progress <= 0.30) {
+                    const t = (progress - 0.15) / (0.30 - 0.15);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = -30 * t;
                 }
             } else if (idx === stages.length - 1) {
-                // Last stage: fades in smoothly around 0.68, peaks at ~0.78-0.90, then fades out cleanly before the manifesto section appears
-                if (progress >= 0.72 && progress <= 0.90) {
+                // Last stage: fades in smoothly around 0.65, peaks at ~0.76-0.92, then fades out cleanly before manifesto appears
+                if (progress >= 0.74 && progress <= 0.92) {
                     opacity = 1;
                     translateY = 0;
-                } else if (progress > 0.90) {
-                    const t = (progress - 0.90) / (0.99 - 0.90);
+                } else if (progress > 0.92) {
+                    const t = (progress - 0.92) / (0.99 - 0.92);
                     opacity = Math.max(0, 0.5 * (1 + Math.cos(Math.min(t, 1) * Math.PI)));
                     translateY = -25 * Math.min(t, 1);
-                } else if (progress >= 0.58) {
-                    const t = (0.72 - progress) / (0.72 - 0.58);
+                } else if (progress >= 0.56) {
+                    const t = (0.74 - progress) / (0.74 - 0.56);
                     opacity = 0.5 * (1 + Math.cos(t * Math.PI));
                     translateY = 25 * t;
                 }
@@ -395,7 +439,6 @@ function initHeroScrollSequence() {
             }
 
             stage.el.style.opacity = opacity.toFixed(3);
-            // Crucial: preserve center anchoring -50%, -50% and apply slight vertical parallax
             stage.el.style.transform = `translate(-50%, calc(-50% + ${translateY.toFixed(1)}px))`;
             stage.el.style.pointerEvents = opacity > 0.4 ? 'auto' : 'none';
 
@@ -410,7 +453,7 @@ function initHeroScrollSequence() {
             stageCounter.innerText = String(activeStageIndex + 1).padStart(2, '0');
             const counterContainer = stageCounter.closest('.hero-stage-counter');
             if (counterContainer) {
-                const counterOpacity = progress > 0.90 ? Math.max(0, (1 - progress) / 0.10) : 1;
+                const counterOpacity = progress > 0.92 ? Math.max(0, (1 - progress) / 0.08) : 1;
                 counterContainer.style.opacity = counterOpacity.toFixed(2);
             }
         }
@@ -421,7 +464,7 @@ function initHeroScrollSequence() {
         const diff = targetFrame - currentFrame;
         if (Math.abs(diff) > 0.005) {
             // Adaptive lerp: snappy when scrolling fast, smooth when settling
-            const lerpFactor = Math.abs(diff) > 6 ? 0.35 : 0.22;
+            const lerpFactor = Math.abs(diff) > 6 ? 0.38 : 0.25;
             currentFrame += diff * lerpFactor;
 
             // Guarantee clean arrival at endpoints
@@ -429,7 +472,7 @@ function initHeroScrollSequence() {
             if (currentProgress >= 0.985 && currentFrame > (TOTAL_FRAMES - 2)) currentFrame = TOTAL_FRAMES - 1;
 
             renderFrame(Math.round(currentFrame));
-            preloadWindow(Math.round(currentFrame), 8);
+            preloadWindow(Math.round(currentFrame), 12);
         }
 
         requestAnimationFrame(loop);
